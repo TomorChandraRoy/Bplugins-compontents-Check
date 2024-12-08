@@ -18,8 +18,13 @@ import {
   Composite,
   __experimentalConfirmDialog as ConfirmDialog,
   Dashicon,
-  DateTimePicker
+  DateTimePicker,
+  __experimentalDivider as Divider,
+  __experimentalText as Text,
+  __experimentalVStack as VStack,
+  Draggable, Panel, 
 } from "@wordpress/components";
+import { Icon, more } from '@wordpress/icons';
 import { useState } from "react";
 
 const General = ({ children, ...baseProps }) => {
@@ -114,6 +119,34 @@ const General = ({ children, ...baseProps }) => {
             onChange={ ( newDate ) => setDate( newDate ) }
             is12Hour={ true }
         />
+
+        {/* Divider */}=
+        <VStack spacing={4}>
+            <Text>Some text here</Text>
+            <Divider />
+            <Text>Some more text here</Text>
+        </VStack>
+
+        {/*  Draggable */}
+        <div id="draggable-panel">
+        <Panel header="Draggable panel">
+            <PanelBody>
+                <Draggable elementId="draggable-panel" transferData={ {} }>
+                    { ( { onDraggableStart, onDraggableEnd } ) => (
+                        <div
+                            className="example-drag-handle"
+                            draggable
+                            onDragStart={ onDraggableStart }
+                            onDragEnd={ onDraggableEnd }
+                        >
+                            <Icon icon={ more } />
+                        </div>
+                    ) }
+                </Draggable>
+            </PanelBody>
+        </Panel>
+    </div>
+
     </PanelBody>
   );
 };

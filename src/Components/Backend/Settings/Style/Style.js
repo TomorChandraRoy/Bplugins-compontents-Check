@@ -13,7 +13,7 @@ import {
   ComboboxControl,
   CustomSelectControl,
   __experimentalDimensionControl as DimensionControl,
-  Disabled, TextControl ,Button
+  Disabled, TextControl ,Button,DropZone, DropZoneProvider 
 } from "@wordpress/components";
 import { useState } from "react";
 
@@ -158,7 +158,18 @@ const Style = () => {
       setIsDisabled((state) => !state);
   };
 
-  
+// DropZone
+const handleFilesDrop = (files) => {
+  console.log('Dropped files:', files);
+};
+
+const handleHTMLDrop = (html) => {
+  console.log('Dropped HTML:', html);
+};
+
+const handleDrop = (event) => {
+  console.log('Generic drop:', event);
+};
   return (
     <>
       <PanelBody
@@ -274,6 +285,18 @@ const Style = () => {
                 {isDisabled ? 'Enable Input' : 'Disable Input'}
             </Button>
         </div>
+
+{/* DropZone */}
+<DropZoneProvider>
+            <div style={{ backgroundColor: "#e7e7e7", padding: "56px 64px", textAlign: "center" }}>
+                Drag and drop files or HTML content here
+                <DropZone
+                    onFilesDrop={handleFilesDrop}
+                    onHTMLDrop={handleHTMLDrop}
+                    onDrop={handleDrop}
+                />
+            </div>
+        </DropZoneProvider>
 
     </>
   );
