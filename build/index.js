@@ -766,28 +766,28 @@ const options = [{
 
 //CustomSelectControl
 const optionss = [{
-  key: 'small',
-  name: 'Small',
+  key: "small",
+  name: "Small",
   style: {
-    fontSize: '50%'
+    fontSize: "50%"
   }
 }, {
-  key: 'normal',
-  name: 'Normal',
+  key: "normal",
+  name: "Normal",
   style: {
-    fontSize: '100%'
+    fontSize: "100%"
   }
 }, {
-  key: 'large',
-  name: 'Large',
+  key: "large",
+  name: "Large",
   style: {
-    fontSize: '200%'
+    fontSize: "200%"
   }
 }, {
-  key: 'huge',
-  name: 'Huge',
+  key: "huge",
+  name: "Huge",
   style: {
-    fontSize: '300%'
+    fontSize: "300%"
   }
 }];
 const Style = () => {
@@ -866,6 +866,24 @@ const Style = () => {
     setSelectedItem(newItem);
   };
   console.log("CustomSelectControl:", selectedItem);
+
+  //DimensionControl
+  const [paddingSize, setPaddingSize] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+  console.log("DimensionControl:", paddingSize);
+
+  // Disabled
+  const [isDisabled, setIsDisabled] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  console.log("isDisabled :", _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Disabled);
+  const input = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    __next40pxDefaultSize: true,
+    __nextHasNoMarginBottom: true,
+    label: "Input",
+    onChange: value => console.log('Input changed to:', value)
+  });
+  // Toggle Disabled state
+  const toggleDisabled = () => {
+    setIsDisabled(state => !state);
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color Picker", "b-blocks"),
@@ -926,7 +944,17 @@ const Style = () => {
     options: optionss,
     value: selectedItem,
     onChange: handleChange
-  }));
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalDimensionControl, {
+    __nextHasNoMarginBottom: true,
+    __next40pxDefaultSize: true,
+    label: "Padding",
+    icon: "desktop",
+    onChange: value => setPaddingSize(value),
+    value: paddingSize
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, isDisabled ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Disabled, null, input) : input, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "primary",
+    onClick: toggleDisabled
+  }, isDisabled ? 'Enable Input' : 'Disable Input')));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
 

@@ -12,6 +12,8 @@ import {
   ColorPicker,
   ComboboxControl,
   CustomSelectControl,
+  __experimentalDimensionControl as DimensionControl,
+  Disabled, TextControl ,Button
 } from "@wordpress/components";
 import { useState } from "react";
 
@@ -43,24 +45,24 @@ const options = [
 //CustomSelectControl
 const optionss = [
   {
-    key: 'small',
-    name: 'Small',
-    style: { fontSize: '50%' },
+    key: "small",
+    name: "Small",
+    style: { fontSize: "50%" },
   },
   {
-    key: 'normal',
-    name: 'Normal',
-    style: { fontSize: '100%' },
+    key: "normal",
+    name: "Normal",
+    style: { fontSize: "100%" },
   },
   {
-    key: 'large',
-    name: 'Large',
-    style: { fontSize: '200%' },
+    key: "large",
+    name: "Large",
+    style: { fontSize: "200%" },
   },
   {
-    key: 'huge',
-    name: 'Huge',
-    style: { fontSize: '300%' },
+    key: "huge",
+    name: "Huge",
+    style: { fontSize: "300%" },
   },
 ];
 
@@ -131,11 +133,32 @@ const Style = () => {
   const [selectedItem, setSelectedItem] = useState(options[0]);
 
   const handleChange = (newItem) => {
-    setSelectedItem(newItem); 
+    setSelectedItem(newItem);
   };
   console.log("CustomSelectControl:", selectedItem);
-  
 
+  //DimensionControl
+  const [paddingSize, setPaddingSize] = useState("");
+  console.log("DimensionControl:",paddingSize);
+
+  // Disabled
+  const [ isDisabled, setIsDisabled ] = useState( true );
+  console.log("isDisabled :", Disabled);
+
+  const input = (
+    <TextControl
+        __next40pxDefaultSize
+        __nextHasNoMarginBottom
+        label="Input"
+        onChange={(value) => console.log('Input changed to:', value)}
+    />
+);
+    // Toggle Disabled state
+    const toggleDisabled = () => {
+      setIsDisabled((state) => !state);
+  };
+
+  
   return (
     <>
       <PanelBody
@@ -172,6 +195,7 @@ const Style = () => {
       <BoxControl __next40pxDefaultSize values={values} onChange={setValues} />
 
       {/* PART 2 */}
+
       {/* CheckboxControl */}
 
       <CheckboxControl
@@ -223,13 +247,34 @@ const Style = () => {
       />
       {/* CustomSelectControl */}
       <CustomSelectControl
-      __next40pxDefaultSize
-      label="Font Size"
-      options={optionss}
-      value={selectedItem} 
-      onChange={handleChange} 
-    />
-  
+        __next40pxDefaultSize
+        label="Font Size"
+        options={optionss}
+        value={selectedItem}
+        onChange={handleChange}
+      />
+
+      {/* DimensionControl */}
+      <DimensionControl
+        __nextHasNoMarginBottom
+        __next40pxDefaultSize
+        label={"Padding"}
+        icon={"desktop"}
+        onChange={(value) => setPaddingSize(value)}
+        value={paddingSize}
+      />
+
+      {/* Disabled */}
+      <div>
+            {/* Conditionally wrap input with Disabled */}
+            {isDisabled ? <Disabled>{input}</Disabled> : input}
+
+            {/* Button to toggle the disabled state */}
+            <Button variant="primary" onClick={toggleDisabled}>
+                {isDisabled ? 'Enable Input' : 'Disable Input'}
+            </Button>
+        </div>
+
     </>
   );
 };
