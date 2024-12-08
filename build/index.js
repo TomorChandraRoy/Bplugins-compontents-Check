@@ -581,6 +581,7 @@ const General = ({
     baseControlProps,
     controlProps
   } = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.useBaseControlProps)(baseProps);
+  const [date, setDate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new Date());
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Purpose", "b-blocks"),
@@ -618,6 +619,18 @@ const General = ({
     src: "https://cdn.the-scientist.com/assets/articleNo/66864/aImg/35078/foresttb-m.jpg"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CardFooter, null, "Card Footer")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorIndicator, {
     colorValue: "#0073aa"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Composite, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Composite.Group, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Composite.GroupLabel, null, "Label"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Composite.Item, null, "Item 1"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Composite.Item, null, "Item 2"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalConfirmDialog, {
+    onConfirm: () => console.debug(" Confirmed! ")
+  }, "Are you sure? ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, "This action cannot be undone!")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dashicon, {
+    icon: "admin-home"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dashicon, {
+    icon: "products"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dashicon, {
+    icon: "wordpress"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.DateTimePicker, {
+    currentDate: date,
+    onChange: newDate => setDate(newDate),
+    is12Hour: true
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (General);
@@ -741,14 +754,41 @@ const colors = [{
 
 // ComboboxControl
 const options = [{
-  value: 'small',
-  label: 'Small'
+  value: "small",
+  label: "Small"
 }, {
-  value: 'normal',
-  label: 'Normal'
+  value: "normal",
+  label: "Normal"
 }, {
-  value: 'large',
-  label: 'Large'
+  value: "large",
+  label: "Large"
+}];
+
+//CustomSelectControl
+const optionss = [{
+  key: 'small',
+  name: 'Small',
+  style: {
+    fontSize: '50%'
+  }
+}, {
+  key: 'normal',
+  name: 'Normal',
+  style: {
+    fontSize: '100%'
+  }
+}, {
+  key: 'large',
+  name: 'Large',
+  style: {
+    fontSize: '200%'
+  }
+}, {
+  key: 'huge',
+  name: 'Huge',
+  style: {
+    fontSize: '300%'
+  }
 }];
 const Style = () => {
   const [angle, setAngle] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
@@ -819,6 +859,13 @@ const Style = () => {
   const [fontSize, setFontSize] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)();
   const [filteredOptions, setFilteredOptions] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(options);
   console.log("ComboboxControl:", fontSize);
+
+  //CustomSelectControl
+  const [selectedItem, setSelectedItem] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(options[0]);
+  const handleChange = newItem => {
+    setSelectedItem(newItem);
+  };
+  console.log("CustomSelectControl:", selectedItem);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color Picker", "b-blocks"),
@@ -873,6 +920,12 @@ const Style = () => {
     onChange: setFontSize,
     options: filteredOptions,
     onFilterValueChange: inputValue => setFilteredOptions(options.filter(option => option.value === inputValue))
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CustomSelectControl, {
+    __next40pxDefaultSize: true,
+    label: "Font Size",
+    options: optionss,
+    value: selectedItem,
+    onChange: handleChange
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);

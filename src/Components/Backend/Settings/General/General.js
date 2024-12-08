@@ -15,7 +15,10 @@ import {
   CardDivider,
   CardHeader,
   ColorIndicator,
-  Composite
+  Composite,
+  __experimentalConfirmDialog as ConfirmDialog,
+  Dashicon,
+  DateTimePicker
 } from "@wordpress/components";
 import { useState } from "react";
 
@@ -24,6 +27,8 @@ const General = ({ children, ...baseProps }) => {
   console.log(value);
 
   const { baseControlProps, controlProps } = useBaseControlProps(baseProps);
+
+  const [ date, setDate ] = useState( new Date() );
 
   return (
     <PanelBody
@@ -82,8 +87,33 @@ const General = ({ children, ...baseProps }) => {
       {/* ColorIndicator */}
       <ColorIndicator colorValue="#0073aa" />
 
-      {/* ColorPicker  */}
-      
+      {/* Composite  */}
+      <Composite>
+        <Composite.Group>
+          <Composite.GroupLabel>Label</Composite.GroupLabel>
+          <Composite.Item>Item 1</Composite.Item>
+          <Composite.Item>Item 2</Composite.Item>
+        </Composite.Group>
+      </Composite>
+
+      {/* ConfirmDialog */}
+      <ConfirmDialog onConfirm={() => console.debug(" Confirmed! ")}>
+        Are you sure? <strong>This action cannot be undone!</strong>
+      </ConfirmDialog>
+
+      {/*  Dashicon */}
+      <div>
+        <Dashicon icon="admin-home" />
+        <Dashicon icon="products" />
+        <Dashicon icon="wordpress" />
+    </div>
+
+    {/* DateTimePicker  */}
+    <DateTimePicker
+            currentDate={ date }
+            onChange={ ( newDate ) => setDate( newDate ) }
+            is12Hour={ true }
+        />
     </PanelBody>
   );
 };

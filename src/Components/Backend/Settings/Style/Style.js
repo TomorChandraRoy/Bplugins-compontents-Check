@@ -9,7 +9,9 @@ import {
   CheckboxControl,
   ClipboardButton,
   ColorPalette,
-  ColorPicker,ComboboxControl
+  ColorPicker,
+  ComboboxControl,
+  CustomSelectControl,
 } from "@wordpress/components";
 import { useState } from "react";
 
@@ -25,16 +27,40 @@ const colors = [{ name: "Blue 20", color: "#72aee6" }];
 // ComboboxControl
 const options = [
   {
-      value: 'small',
-      label: 'Small',
+    value: "small",
+    label: "Small",
   },
   {
-      value: 'normal',
-      label: 'Normal',
+    value: "normal",
+    label: "Normal",
   },
   {
-      value: 'large',
-      label: 'Large',
+    value: "large",
+    label: "Large",
+  },
+];
+
+//CustomSelectControl
+const optionss = [
+  {
+    key: 'small',
+    name: 'Small',
+    style: { fontSize: '50%' },
+  },
+  {
+    key: 'normal',
+    name: 'Normal',
+    style: { fontSize: '100%' },
+  },
+  {
+    key: 'large',
+    name: 'Large',
+    style: { fontSize: '200%' },
+  },
+  {
+    key: 'huge',
+    name: 'Huge',
+    style: { fontSize: '300%' },
   },
 ];
 
@@ -94,13 +120,21 @@ const Style = () => {
 
   // colorPicker
   const [colorPicker, setColorPicker] = useState();
-  console.log("colorPicker: ",colorPicker);
+  console.log("colorPicker: ", colorPicker);
 
-// ComboboxControl
-const [ fontSize, setFontSize ] = useState();
-const [ filteredOptions, setFilteredOptions ] = useState( options );
-console.log("ComboboxControl:",  fontSize);
+  // ComboboxControl
+  const [fontSize, setFontSize] = useState();
+  const [filteredOptions, setFilteredOptions] = useState(options);
+  console.log("ComboboxControl:", fontSize);
 
+  //CustomSelectControl
+  const [selectedItem, setSelectedItem] = useState(options[0]);
+
+  const handleChange = (newItem) => {
+    setSelectedItem(newItem); 
+  };
+  console.log("CustomSelectControl:", selectedItem);
+  
 
   return (
     <>
@@ -173,24 +207,29 @@ console.log("ComboboxControl:",  fontSize);
         defaultValue="#000"
       />
 
-     {/* ComboboxControl */}
-        <ComboboxControl
-            __next40pxDefaultSize
-            __nextHasNoMarginBottom
-            label="Font Size"
-            value={ fontSize }
-            onChange={ setFontSize }
-            options={ filteredOptions }
-            onFilterValueChange={ ( inputValue ) =>
-                setFilteredOptions(
-                    options.filter( ( option ) =>
-                        option.value === inputValue
-                    )
-                )
-            }
-        />
-
-      
+      {/* ComboboxControl */}
+      <ComboboxControl
+        __next40pxDefaultSize
+        __nextHasNoMarginBottom
+        label="Font Size"
+        value={fontSize}
+        onChange={setFontSize}
+        options={filteredOptions}
+        onFilterValueChange={(inputValue) =>
+          setFilteredOptions(
+            options.filter((option) => option.value === inputValue)
+          )
+        }
+      />
+      {/* CustomSelectControl */}
+      <CustomSelectControl
+      __next40pxDefaultSize
+      label="Font Size"
+      options={optionss}
+      value={selectedItem} 
+      onChange={handleChange} 
+    />
+  
     </>
   );
 };
