@@ -616,7 +616,9 @@ const General = ({
     size: "large"
   }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus hendrerit vel turpis in vehicula. Nam luctus condimentum mollis.", " "), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CardMedia, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: "https://cdn.the-scientist.com/assets/articleNo/66864/aImg/35078/foresttb-m.jpg"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CardFooter, null, "Card Footer")));
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CardFooter, null, "Card Footer")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorIndicator, {
+    colorValue: "#0073aa"
+  }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (General);
 
@@ -736,13 +738,25 @@ const colors = [{
   name: "Blue 20",
   color: "#72aee6"
 }];
+
+// ComboboxControl
+const options = [{
+  value: 'small',
+  label: 'Small'
+}, {
+  value: 'normal',
+  label: 'Normal'
+}, {
+  value: 'large',
+  label: 'Large'
+}];
 const Style = () => {
   const [angle, setAngle] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
-  console.log("AnglePickerControl:", angle);
+  // console.log("AnglePickerControl:", angle);
 
   // AlignmentMatrixControl
   const [alignment, setAlignment] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("center center");
-  console.log("AlignmentMatrixControl:", alignment);
+  // console.log("AlignmentMatrixControl:", alignment);
 
   //BorderBoxControl
   const defaultBorder = {
@@ -757,22 +771,54 @@ const Style = () => {
     left: defaultBorder
   });
   const onChange = newBorders => setBorders(newBorders);
-  console.log("BorderBoxControl : ", borders);
+  // console.log("BorderBoxControl : ", borders);
 
   //BorderControl
   const [border, setBorder] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     color: "#0000FF"
   });
-  console.log("BorderControl:", border);
+  // console.log("BorderControl:", border);
 
-  //BoxControl 
+  //BoxControl
   const [values, setValues] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    top: '50px',
-    left: '10%',
-    right: '10%',
-    bottom: '50px'
+    top: "50px",
+    left: "10%",
+    right: "10%",
+    bottom: "50px"
   });
-  console.log("BoxControl :", values);
+  // console.log("BoxControl :", values);
+
+  // part2
+  // CheckboxControl
+  const [isChecked, setChecked] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  console.log("CheckboxControl:", isChecked);
+
+  //ClipboardButton
+  const [hasCopied, setHasCopied] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  console.log("ClipboardButton:", hasCopied);
+
+  //ColorPalette
+  const [color, setColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#f00");
+  const colorsPalette = [{
+    name: "red",
+    color: "#f00"
+  }, {
+    name: "white",
+    color: "#fff"
+  }, {
+    name: "blue",
+    color: "#00f"
+  }];
+  console.log("ColorPalette", color);
+
+  // colorPicker
+  const [colorPicker, setColorPicker] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)();
+  console.log("colorPicker: ", colorPicker);
+
+  // ComboboxControl
+  const [fontSize, setFontSize] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)();
+  const [filteredOptions, setFilteredOptions] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(options);
+  console.log("ComboboxControl:", fontSize);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color Picker", "b-blocks"),
@@ -799,6 +845,34 @@ const Style = () => {
     __next40pxDefaultSize: true,
     values: values,
     onChange: setValues
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CheckboxControl, {
+    __nextHasNoMarginBottom: true,
+    label: "Is author",
+    help: "Is the user a author or not?",
+    checked: isChecked,
+    onChange: setChecked
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ClipboardButton, {
+    variant: "primary",
+    text: "Text to be copied.",
+    onCopy: () => setHasCopied(true),
+    onFinishCopy: () => setHasCopied(false)
+  }, hasCopied ? "Copied!" : "Copy Text"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+    colorsPalette: colorsPalette,
+    value: color,
+    onChange: color => setColor(color)
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker, {
+    ColorPicker: _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker,
+    onChange: setColorPicker,
+    enableAlpha: true,
+    defaultValue: "#000"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ComboboxControl, {
+    __next40pxDefaultSize: true,
+    __nextHasNoMarginBottom: true,
+    label: "Font Size",
+    value: fontSize,
+    onChange: setFontSize,
+    options: filteredOptions,
+    onFilterValueChange: inputValue => setFilteredOptions(options.filter(option => option.value === inputValue))
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);

@@ -14,6 +14,8 @@ import {
   CardMedia,
   CardDivider,
   CardHeader,
+  ColorIndicator,
+  Composite
 } from "@wordpress/components";
 import { useState } from "react";
 
@@ -59,6 +61,7 @@ const General = ({ children, ...baseProps }) => {
 
       <Button variant="secondary">Click me!</Button>
 
+      {/* Card */}
       <Card>
         <CardHeader>Card Header</CardHeader>
         <CardBody>
@@ -75,6 +78,12 @@ const General = ({ children, ...baseProps }) => {
         </CardMedia>
         <CardFooter>Card Footer</CardFooter>
       </Card>
+
+      {/* ColorIndicator */}
+      <ColorIndicator colorValue="#0073aa" />
+
+      {/* ColorPicker  */}
+      
     </PanelBody>
   );
 };
