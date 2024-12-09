@@ -1132,6 +1132,9 @@ const COLOR_PALETTE = [{
   name: "Purple",
   slug: "purple"
 }];
+
+// FormTokenField
+const continents = ['Africa', 'America', 'Antarctica', 'Asia', 'Europe', 'Oceania'];
 const Style = () => {
   const [angle, setAngle] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   // console.log("AnglePickerControl:", angle);
@@ -1241,8 +1244,12 @@ const Style = () => {
   // DuotonePicker
   const [duotone, setDuotone] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["#000000", "#ffffff"]);
 
-  //FormToggle
-  const [isCheckedd, setCheckedd] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  //FormTokenField 
+  const [selectedContinents, setSelectedContinents] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  console.log(selectedContinents);
+
+  // GradientPicker
+  const [gradient, setGradient] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color Picker", "b-blocks"),
@@ -1374,6 +1381,39 @@ const Style = () => {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormToggle, {
     checked: isChecked,
     onChange: () => setChecked(state => !state)
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormTokenField, {
+    __next40pxDefaultSize: true,
+    value: selectedContinents,
+    suggestions: continents,
+    onChange: tokens => setSelectedContinents(tokens),
+    __nextHasNoMarginBottom: true
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.GradientPicker, {
+    value: gradient,
+    onChange: currentGradient => setGradient(currentGradient),
+    gradients: [{
+      name: 'JShine',
+      gradient: 'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+      slug: 'jshine'
+    }, {
+      name: 'Moonlit Asteroid',
+      gradient: 'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+      slug: 'moonlit-asteroid'
+    }, {
+      name: 'Rastafarie',
+      gradient: 'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+      slug: 'rastafari'
+    }]
   })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);

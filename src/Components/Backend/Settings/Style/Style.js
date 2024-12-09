@@ -22,7 +22,9 @@ import {
   DuotoneSwatch,
   FocalPointPicker,
   FontSizePicker,
-  FormToggle
+  FormToggle,
+  FormTokenField,
+  GradientPicker,
 } from "@wordpress/components";
 
 import { useState } from "react";
@@ -92,6 +94,17 @@ const COLOR_PALETTE = [
   { color: "#000097", name: "Blue", slug: "blue" },
   { color: "#8c00b7", name: "Purple", slug: "purple" },
 ];
+
+// FormTokenField
+const continents = [
+  'Africa',
+  'America',
+  'Antarctica',
+  'Asia',
+  'Europe',
+  'Oceania',
+];
+
 
 const Style = () => {
   const [angle, setAngle] = useState(0);
@@ -201,9 +214,13 @@ const Style = () => {
   // DuotonePicker
   const [duotone, setDuotone] = useState(["#000000", "#ffffff"]);
 
-//FormToggle
-  const [ isCheckedd, setCheckedd ] = useState( true );
+  
+//FormTokenField 
+const [ selectedContinents, setSelectedContinents ] = useState( [] );
+console.log(selectedContinents);
 
+// GradientPicker
+const [ gradient, setGradient ] = useState( null );
   return (
     <>
       <PanelBody
@@ -398,7 +415,44 @@ const Style = () => {
       </div>
 
       {/* FormTokenField */}
+<div style={{marginTop: "20px", marginLeft:"10px"}}>
+<FormTokenField
+            __next40pxDefaultSize
+            value={ selectedContinents }
+            suggestions={ continents }
+            onChange={ ( tokens ) => setSelectedContinents( tokens ) }
+            __nextHasNoMarginBottom
+        />
+</div>
+
+
       {/* GradientPicker */}
+<div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
+<GradientPicker
+      value={ gradient }
+      onChange={ ( currentGradient ) => setGradient( currentGradient ) }
+      gradients={ [
+        {
+          name: 'JShine',
+          gradient:
+            'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+          slug: 'jshine',
+        },
+        {
+          name: 'Moonlit Asteroid',
+          gradient:
+            'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+          slug: 'moonlit-asteroid',
+        },
+        {
+          name: 'Rastafarie',
+          gradient:
+            'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+          slug: 'rastafari',
+        },
+      ] }
+    />
+</div>
       {/* Guide */}
       {/* WithConstrainedTabbing */}
 
