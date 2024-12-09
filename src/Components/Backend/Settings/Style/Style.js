@@ -26,7 +26,7 @@ import {
   FormTokenField,
   GradientPicker,
   withConstrainedTabbing,
-  
+  withFocusReturn
 } from "@wordpress/components";
 
 import { useState } from "react";
@@ -110,6 +110,19 @@ const ConstrainedTabbing = withConstrainedTabbing(
   ( { children } ) => children
 );
 
+
+// WithFocusReturn
+const EnhancedComponent = withFocusReturn( () => (
+  <div>
+      Focus will return to the previous input when this component is unmounted
+      <TextControl
+          __nextHasNoMarginBottom
+          __next40pxDefaultSize
+          autoFocus={ true }
+          onChange={ () => {} }
+      />
+  </div>
+) );
 
 
 
@@ -262,6 +275,13 @@ if ( isConstrainedTabbing ) {
 const toggleConstrain = () => {
     setIsConstrainedTabbing( ( state ) => ! state );
 };
+//WithFocusReturn
+const [ text, setText ] = useState( '' );
+const unmount = () => {
+    document.activeElement.blur();
+    setText( '' );
+};
+console.log("WithFocusReturn :", text);
 
   return (
     <>
@@ -522,7 +542,23 @@ const toggleConstrain = () => {
             </Button>
         </div>
 
-      {/*  */}
+      {/* WithFocusReturn */}
+
+      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
+            <TextControl
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize
+                placeholder="Type something"
+                value={ text }
+                onChange={ ( value ) => setText( value ) }
+            />
+            { text && <EnhancedComponent /> }
+            { text && (
+                <Button variant="secondary" onClick={ unmount }>
+                    Unmount
+                </Button>
+            ) }
+        </div>
       {/*  */}
     </>
   );

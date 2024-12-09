@@ -43,6 +43,12 @@ import {
   arrowDown,
 } from "@wordpress/icons";
 import { useState } from "react";
+const { getComputedStyle } = window;
+
+
+
+
+
 
 const General = ({ children, ...baseProps }) => {
   const [value, setValue] = useState("");

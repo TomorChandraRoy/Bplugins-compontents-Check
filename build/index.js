@@ -774,6 +774,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const {
+  getComputedStyle
+} = window;
 const General = ({
   children,
   ...baseProps
@@ -1158,6 +1161,14 @@ const continents = ['Africa', 'America', 'Antarctica', 'Asia', 'Europe', 'Oceani
 const ConstrainedTabbing = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.withConstrainedTabbing)(({
   children
 }) => children);
+
+// WithFocusReturn
+const EnhancedComponent = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.withFocusReturn)(() => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Focus will return to the previous input when this component is unmounted", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+  __nextHasNoMarginBottom: true,
+  __next40pxDefaultSize: true,
+  autoFocus: true,
+  onChange: () => {}
+})));
 const Style = () => {
   const [angle, setAngle] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   // console.log("AnglePickerControl:", angle);
@@ -1300,6 +1311,13 @@ const Style = () => {
   const toggleConstrain = () => {
     setIsConstrainedTabbing(state => !state);
   };
+  //WithFocusReturn
+  const [text, setText] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const unmount = () => {
+    document.activeElement.blur();
+    setText('');
+  };
+  console.log("WithFocusReturn :", text);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color Picker", "b-blocks"),
@@ -1473,7 +1491,22 @@ const Style = () => {
   }, form, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "secondary",
     onClick: toggleConstrain
-  }, isConstrainedTabbing ? 'Disable' : 'Enable', " constrain tabbing")));
+  }, isConstrainedTabbing ? 'Disable' : 'Enable', " constrain tabbing")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    __nextHasNoMarginBottom: true,
+    __next40pxDefaultSize: true,
+    placeholder: "Type something",
+    value: text,
+    onChange: value => setText(value)
+  }), text && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(EnhancedComponent, null), text && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "secondary",
+    onClick: unmount
+  }, "Unmount")));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
 
