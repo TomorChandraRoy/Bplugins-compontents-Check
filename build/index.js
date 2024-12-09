@@ -1155,6 +1155,9 @@ const COLOR_PALETTE = [{
 
 // FormTokenField
 const continents = ['Africa', 'America', 'Antarctica', 'Asia', 'Europe', 'Oceania'];
+const ConstrainedTabbing = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.withConstrainedTabbing)(({
+  children
+}) => children);
 const Style = () => {
   const [angle, setAngle] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   // console.log("AnglePickerControl:", angle);
@@ -1277,6 +1280,26 @@ const Style = () => {
   // if ( ! isOpen ) {
   //     return null;
   // }
+
+  //   withConstrainedTabbing,
+  const [isConstrainedTabbing, setIsConstrainedTabbing] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  let form = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    __next40pxDefaultSize: true,
+    __nextHasNoMarginBottom: true,
+    label: "Input 1",
+    onChange: () => {}
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    __next40pxDefaultSize: true,
+    __nextHasNoMarginBottom: true,
+    label: "Input 2",
+    onChange: () => {}
+  }));
+  if (isConstrainedTabbing) {
+    form = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ConstrainedTabbing, null, form);
+  }
+  const toggleConstrain = () => {
+    setIsConstrainedTabbing(state => !state);
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color Picker", "b-blocks"),
@@ -1441,7 +1464,16 @@ const Style = () => {
       gradient: 'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
       slug: 'rastafari'
     }]
-  })));
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }, form, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "secondary",
+    onClick: toggleConstrain
+  }, isConstrainedTabbing ? 'Disable' : 'Enable', " constrain tabbing")));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
 

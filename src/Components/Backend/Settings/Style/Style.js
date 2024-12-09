@@ -25,6 +25,8 @@ import {
   FormToggle,
   FormTokenField,
   GradientPicker,
+  withConstrainedTabbing,
+  
 } from "@wordpress/components";
 
 import { useState } from "react";
@@ -104,6 +106,12 @@ const continents = [
   'Europe',
   'Oceania',
 ];
+const ConstrainedTabbing = withConstrainedTabbing(
+  ( { children } ) => children
+);
+
+
+
 
 
 const Style = () => {
@@ -228,6 +236,33 @@ const [ gradient, setGradient ] = useState( null );
 // if ( ! isOpen ) {
 //     return null;
 // }
+
+//   withConstrainedTabbing,
+const [ isConstrainedTabbing, setIsConstrainedTabbing ] = useState( false );
+let form = (
+    <form>
+        <TextControl
+            __next40pxDefaultSize
+            __nextHasNoMarginBottom
+            label="Input 1"
+            onChange={ () => {} }
+        />
+        <TextControl
+            __next40pxDefaultSize
+            __nextHasNoMarginBottom
+            label="Input 2"
+            onChange={ () => {} }
+        />
+    </form>
+);
+if ( isConstrainedTabbing ) {
+    form = <ConstrainedTabbing>{ form }</ConstrainedTabbing>;
+}
+
+const toggleConstrain = () => {
+    setIsConstrainedTabbing( ( state ) => ! state );
+};
+
   return (
     <>
       <PanelBody
@@ -478,6 +513,14 @@ const [ gradient, setGradient ] = useState( null );
             ] }
         /> */}
       {/* WithConstrainedTabbing */}
+
+<div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
+            { form }
+            <Button variant="secondary" onClick={ toggleConstrain }>
+                { isConstrainedTabbing ? 'Disable' : 'Enable' } constrain
+                tabbing
+            </Button>
+        </div>
 
       {/*  */}
       {/*  */}

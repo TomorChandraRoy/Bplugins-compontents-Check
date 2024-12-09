@@ -32,8 +32,7 @@ import {
   FormFileUpload,
   __experimentalGrid as Grid,
   __experimentalHStack as HStack,
-  __experimentalHeading as Heading 
-
+  __experimentalHeading as Heading,
 } from "@wordpress/components";
 import {
   Icon,
