@@ -31,6 +31,9 @@ import {
   Flex, FlexBlock, FlexItem,FocusableIframe,
   FormFileUpload,
   __experimentalGrid as Grid,
+  __experimentalHStack as HStack,
+  __experimentalHeading as Heading 
+
 } from "@wordpress/components";
 import {
   Icon,
@@ -270,7 +273,6 @@ const General = ({ children, ...baseProps }) => {
         </div>
 
       {/* Grid */}
-
       <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
       <Grid columns={ 3 }>
             <Text>Code</Text>
@@ -279,7 +281,18 @@ const General = ({ children, ...baseProps }) => {
         </Grid>
       </div>
       {/*HStack  */}
+      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
+      <HStack>
+            <Text>Code</Text>
+            <Text>is</Text>
+            <Text>Poetry</Text>
+        </HStack>
+      </div>
+
       {/* Heading */}
+      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
+      <Heading>Code is Poetry</Heading>;
+      </div>
       {/* NavigateRegions */}
       {/* HigherOrder */}
       {/*  */}

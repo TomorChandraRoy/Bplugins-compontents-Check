@@ -221,6 +221,13 @@ console.log(selectedContinents);
 
 // GradientPicker
 const [ gradient, setGradient ] = useState( null );
+
+// Guide
+// const [ isOpen, setIsOpen ] = useState( true );
+
+// if ( ! isOpen ) {
+//     return null;
+// }
   return (
     <>
       <PanelBody
@@ -454,6 +461,22 @@ const [ gradient, setGradient ] = useState( null );
     />
 </div>
       {/* Guide */}
+      {/* <Guide
+            onFinish={ () => setIsOpen( false ) }
+            pages={ [
+                {
+                    content: <p>Welcome to the ACME Store!</p>,
+                },
+                {
+                    image: <img src="https://acmestore.com/add-to-cart.png" />,
+                    content: (
+                        <p>
+                            Click <i>Add to Cart</i> to buy a product.
+                        </p>
+                    ),
+                },
+            ] }
+        /> */}
       {/* WithConstrainedTabbing */}
 
       {/*  */}
