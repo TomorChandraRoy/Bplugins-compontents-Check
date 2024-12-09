@@ -41,9 +41,10 @@ import {
   arrowRight,
   arrowUp,
   arrowDown,
+  wordpress 
 } from "@wordpress/icons";
 import { useState } from "react";
-const { getComputedStyle } = window;
+
 
 
 
@@ -296,11 +297,13 @@ const General = ({ children, ...baseProps }) => {
 
       {/* Heading */}
       <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
-      <Heading>Code is Poetry</Heading>;
+      <Heading>Code is Poetry</Heading>
       </div>
-      {/* NavigateRegions */}
-      {/* HigherOrder */}
+    
       {/*  */}
+      <div  style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
+      <Icon icon={ wordpress } />
+      </div>
       {/*  */}
       {/*  */}
       {/*  */}

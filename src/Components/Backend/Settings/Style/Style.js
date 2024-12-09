@@ -26,7 +26,9 @@ import {
   FormTokenField,
   GradientPicker,
   withConstrainedTabbing,
-  withFocusReturn
+  withFocusReturn,
+  __experimentalInputControl as InputControl,
+  IsolatedEventContainer 
 } from "@wordpress/components";
 
 import { useState } from "react";
@@ -282,6 +284,14 @@ const unmount = () => {
     setText( '' );
 };
 console.log("WithFocusReturn :", text);
+
+// InputControl
+const [ value, setValue ] = useState( '' );
+
+// IsolatedEventContainer 
+const clickHandler = () => {
+  console.log('Isolated component clicked!');
+};
 
   return (
     <>
@@ -559,7 +569,25 @@ console.log("WithFocusReturn :", text);
                 </Button>
             ) }
         </div>
-      {/*  */}
+      {/*  InputControl*/}
+      <div  style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
+<h3>inputControl👇</h3>
+<InputControl
+            value={ value }
+            onChange={ ( nextValue ) => setValue( nextValue ?? '' ) }
+        />
+      </div>
+
+
+      {/* IsolatedEventContainer */}
+      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px", border:"2px solid red", textAlign:"center", paddingTop:"5px"}}>
+      <IsolatedEventContainer
+            className="component-some_component"
+            onClick={ clickHandler }
+        >
+            <p>This is an isolated component</p>
+        </IsolatedEventContainer>
+      </div>
     </>
   );
 };
