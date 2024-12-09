@@ -21,7 +21,8 @@ import {
   DuotonePicker,
   DuotoneSwatch,
   FocalPointPicker,
-  FontSizePicker
+  FontSizePicker,
+  FormToggle
 } from "@wordpress/components";
 
 import { useState } from "react";
@@ -199,6 +200,9 @@ const Style = () => {
 
   // DuotonePicker
   const [duotone, setDuotone] = useState(["#000000", "#ffffff"]);
+
+//FormToggle
+  const [ isCheckedd, setCheckedd ] = useState( true );
 
   return (
     <>
@@ -386,6 +390,13 @@ const Style = () => {
 />
       </div>
       {/* FormToggle */}
+      <div style={{marginTop: "20px", marginLeft:"10px"}}>
+      <FormToggle 
+      checked={ isChecked }
+      onChange={ () => setChecked( ( state ) => ! state ) }
+    />
+      </div>
+
       {/* FormTokenField */}
       {/* GradientPicker */}
       {/* Guide */}

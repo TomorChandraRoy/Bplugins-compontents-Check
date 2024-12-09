@@ -1240,6 +1240,9 @@ const Style = () => {
 
   // DuotonePicker
   const [duotone, setDuotone] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["#000000", "#ffffff"]);
+
+  //FormToggle
+  const [isCheckedd, setCheckedd] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color Picker", "b-blocks"),
@@ -1363,6 +1366,14 @@ const Style = () => {
     }],
     onChange: function noRefCheck() {},
     value: 16
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormToggle, {
+    checked: isChecked,
+    onChange: () => setChecked(state => !state)
   })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
