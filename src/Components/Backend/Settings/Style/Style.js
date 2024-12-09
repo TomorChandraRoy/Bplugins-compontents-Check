@@ -13,8 +13,17 @@ import {
   ComboboxControl,
   CustomSelectControl,
   __experimentalDimensionControl as DimensionControl,
-  Disabled, TextControl ,Button,DropZone, DropZoneProvider 
+  Disabled,
+  TextControl,
+  Button,
+  DropZone,
+  DropZoneProvider,
+  DuotonePicker,
+  DuotoneSwatch,
+  FocalPointPicker,
+  FontSizePicker
 } from "@wordpress/components";
+
 import { useState } from "react";
 
 // BorderBoxControl
@@ -64,6 +73,23 @@ const optionss = [
     name: "Huge",
     style: { fontSize: "300%" },
   },
+];
+
+// DuotonePicker
+const DUOTONE_PALETTE = [
+  {
+    colors: ["#8c00b7", "#fcff41"],
+    name: "Purple and yellow",
+    slug: "purple-yellow",
+  },
+  { colors: ["#000097", "#ff4747"], name: "Blue and red", slug: "blue-red" },
+];
+
+const COLOR_PALETTE = [
+  { color: "#ff4747", name: "Red", slug: "red" },
+  { color: "#fcff41", name: "Yellow", slug: "yellow" },
+  { color: "#000097", name: "Blue", slug: "blue" },
+  { color: "#8c00b7", name: "Purple", slug: "purple" },
 ];
 
 const Style = () => {
@@ -139,37 +165,41 @@ const Style = () => {
 
   //DimensionControl
   const [paddingSize, setPaddingSize] = useState("");
-  console.log("DimensionControl:",paddingSize);
+  console.log("DimensionControl:", paddingSize);
 
   // Disabled
-  const [ isDisabled, setIsDisabled ] = useState( true );
+  const [isDisabled, setIsDisabled] = useState(true);
   console.log("isDisabled :", Disabled);
 
   const input = (
     <TextControl
-        __next40pxDefaultSize
-        __nextHasNoMarginBottom
-        label="Input"
-        onChange={(value) => console.log('Input changed to:', value)}
+      __next40pxDefaultSize
+      __nextHasNoMarginBottom
+      label="Input"
+      onChange={(value) => console.log("Input changed to:", value)}
     />
-);
-    // Toggle Disabled state
-    const toggleDisabled = () => {
-      setIsDisabled((state) => !state);
+  );
+  // Toggle Disabled state
+  const toggleDisabled = () => {
+    setIsDisabled((state) => !state);
   };
 
-// DropZone
-const handleFilesDrop = (files) => {
-  console.log('Dropped files:', files);
-};
+  // DropZone
+  const handleFilesDrop = (files) => {
+    console.log("Dropped files:", files);
+  };
 
-const handleHTMLDrop = (html) => {
-  console.log('Dropped HTML:', html);
-};
+  const handleHTMLDrop = (html) => {
+    console.log("Dropped HTML:", html);
+  };
 
-const handleDrop = (event) => {
-  console.log('Generic drop:', event);
-};
+  const handleDrop = (event) => {
+    console.log("Generic drop:", event);
+  };
+
+  // DuotonePicker
+  const [duotone, setDuotone] = useState(["#000000", "#ffffff"]);
+
   return (
     <>
       <PanelBody
@@ -277,27 +307,92 @@ const handleDrop = (event) => {
 
       {/* Disabled */}
       <div>
-            {/* Conditionally wrap input with Disabled */}
-            {isDisabled ? <Disabled>{input}</Disabled> : input}
+        {/* Conditionally wrap input with Disabled */}
+        {isDisabled ? <Disabled>{input}</Disabled> : input}
 
-            {/* Button to toggle the disabled state */}
-            <Button variant="primary" onClick={toggleDisabled}>
-                {isDisabled ? 'Enable Input' : 'Disable Input'}
-            </Button>
+        {/* Button to toggle the disabled state */}
+        <Button variant="primary" onClick={toggleDisabled}>
+          {isDisabled ? "Enable Input" : "Disable Input"}
+        </Button>
+      </div>
+
+      {/* DropZone */}
+      <DropZoneProvider>
+        <div
+          style={{
+            backgroundColor: "#e7e7e7",
+            padding: "56px 64px",
+            textAlign: "center",
+          }}
+        >
+          Drag and drop files or HTML content here
+          <DropZone
+            onFilesDrop={handleFilesDrop}
+            onHTMLDrop={handleHTMLDrop}
+            onDrop={handleDrop}
+          />
         </div>
+      </DropZoneProvider>
 
-{/* DropZone */}
-<DropZoneProvider>
-            <div style={{ backgroundColor: "#e7e7e7", padding: "56px 64px", textAlign: "center" }}>
-                Drag and drop files or HTML content here
-                <DropZone
-                    onFilesDrop={handleFilesDrop}
-                    onHTMLDrop={handleHTMLDrop}
-                    onDrop={handleDrop}
-                />
-            </div>
-        </DropZoneProvider>
+      {/* DuotonePicker */}
+      <>
+      <DuotonePicker
+        duotonePalette={DUOTONE_PALETTE}
+        colorPalette={COLOR_PALETTE}
+        value={duotone}
+        onChange={setDuotone}
+      />
+      <DuotoneSwatch values={duotone} />
+      </>\
 
+      {/* FocalPointPicker */}
+      <div style={{marginTop: "20px"}}>
+      <FocalPointPicker 
+	url={ "https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg" }
+	dimensions={{
+		width: 400,
+		height: 100,
+	}}
+	value={{
+		x: 0.5,
+		y: 0.5,
+	}}
+	onChange={ ( focalPoint ) => console.log(focalPoint) }
+/>
+      </div>
+      {/* FontSizePicker */}
+      <div style={{marginTop: "20px"}}>
+      <FontSizePicker
+  __next40pxDefaultSize
+  fontSizes={[
+    {
+      name: 'Small',
+      size: 12,
+      slug: 'small'
+    },
+    {
+      name: 'Normal',
+      size: 16,
+      slug: 'normal'
+    },
+    {
+      name: 'Big',
+      size: 26,
+      slug: 'big'
+    }
+  ]}
+  onChange={function noRefCheck(){}}
+  value={16}
+/>
+      </div>
+      {/* FormToggle */}
+      {/* FormTokenField */}
+      {/* GradientPicker */}
+      {/* Guide */}
+      {/* WithConstrainedTabbing */}
+
+      {/*  */}
+      {/*  */}
     </>
   );
 };
