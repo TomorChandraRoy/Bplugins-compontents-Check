@@ -28,7 +28,8 @@ import {
   withConstrainedTabbing,
   withFocusReturn,
   __experimentalInputControl as InputControl,
-  IsolatedEventContainer 
+  IsolatedEventContainer,
+  KeyboardShortcuts,
 } from "@wordpress/components";
 
 import { useState } from "react";
@@ -101,33 +102,27 @@ const COLOR_PALETTE = [
 
 // FormTokenField
 const continents = [
-  'Africa',
-  'America',
-  'Antarctica',
-  'Asia',
-  'Europe',
-  'Oceania',
+  "Africa",
+  "America",
+  "Antarctica",
+  "Asia",
+  "Europe",
+  "Oceania",
 ];
-const ConstrainedTabbing = withConstrainedTabbing(
-  ( { children } ) => children
-);
-
+const ConstrainedTabbing = withConstrainedTabbing(({ children }) => children);
 
 // WithFocusReturn
-const EnhancedComponent = withFocusReturn( () => (
+const EnhancedComponent = withFocusReturn(() => (
   <div>
-      Focus will return to the previous input when this component is unmounted
-      <TextControl
-          __nextHasNoMarginBottom
-          __next40pxDefaultSize
-          autoFocus={ true }
-          onChange={ () => {} }
-      />
+    Focus will return to the previous input when this component is unmounted
+    <TextControl
+      __nextHasNoMarginBottom
+      __next40pxDefaultSize
+      autoFocus={true}
+      onChange={() => {}}
+    />
   </div>
-) );
-
-
-
+));
 
 const Style = () => {
   const [angle, setAngle] = useState(0);
@@ -237,61 +232,74 @@ const Style = () => {
   // DuotonePicker
   const [duotone, setDuotone] = useState(["#000000", "#ffffff"]);
 
-  
-//FormTokenField 
-const [ selectedContinents, setSelectedContinents ] = useState( [] );
-console.log(selectedContinents);
+  //FormTokenField
+  const [selectedContinents, setSelectedContinents] = useState([]);
+  console.log(selectedContinents);
 
-// GradientPicker
-const [ gradient, setGradient ] = useState( null );
+  // GradientPicker
+  const [gradient, setGradient] = useState(null);
 
-// Guide
-// const [ isOpen, setIsOpen ] = useState( true );
+  // Guide
+  // const [ isOpen, setIsOpen ] = useState( true );
 
-// if ( ! isOpen ) {
-//     return null;
-// }
+  // if ( ! isOpen ) {
+  //     return null;
+  // }
 
-//   withConstrainedTabbing,
-const [ isConstrainedTabbing, setIsConstrainedTabbing ] = useState( false );
-let form = (
+  //   withConstrainedTabbing,
+  const [isConstrainedTabbing, setIsConstrainedTabbing] = useState(false);
+  let form = (
     <form>
-        <TextControl
-            __next40pxDefaultSize
-            __nextHasNoMarginBottom
-            label="Input 1"
-            onChange={ () => {} }
-        />
-        <TextControl
-            __next40pxDefaultSize
-            __nextHasNoMarginBottom
-            label="Input 2"
-            onChange={ () => {} }
-        />
+      <TextControl
+        __next40pxDefaultSize
+        __nextHasNoMarginBottom
+        label="Input 1"
+        onChange={() => {}}
+      />
+      <TextControl
+        __next40pxDefaultSize
+        __nextHasNoMarginBottom
+        label="Input 2"
+        onChange={() => {}}
+      />
     </form>
-);
-if ( isConstrainedTabbing ) {
-    form = <ConstrainedTabbing>{ form }</ConstrainedTabbing>;
-}
+  );
+  if (isConstrainedTabbing) {
+    form = <ConstrainedTabbing>{form}</ConstrainedTabbing>;
+  }
 
-const toggleConstrain = () => {
-    setIsConstrainedTabbing( ( state ) => ! state );
-};
-//WithFocusReturn
-const [ text, setText ] = useState( '' );
-const unmount = () => {
+  const toggleConstrain = () => {
+    setIsConstrainedTabbing((state) => !state);
+  };
+  //WithFocusReturn
+  const [text, setText] = useState("");
+  const unmount = () => {
     document.activeElement.blur();
-    setText( '' );
-};
-console.log("WithFocusReturn :", text);
+    setText("");
+  };
+  console.log("WithFocusReturn :", text);
 
-// InputControl
-const [ value, setValue ] = useState( '' );
+  // InputControl
+  const [value, setValue] = useState("");
 
-// IsolatedEventContainer 
-const clickHandler = () => {
-  console.log('Isolated component clicked!');
-};
+  // IsolatedEventContainer
+  const clickHandler = () => {
+    console.log("Isolated component clicked!");
+  };
+
+  //KeyboardShortcuts
+    // State to track if the shortcut is pressed
+    const [isAllSelected, setIsAllSelected] = useState(false);
+
+    // Function to handle "select all" action
+    const selectAll = () => {
+        setIsAllSelected(true);
+    };
+
+    // Function to reset the state (optional)
+    const resetSelection = () => {
+        setIsAllSelected(false);
+    };
 
   return (
     <>
@@ -306,7 +314,6 @@ const clickHandler = () => {
         {/* AlignmentMatrixControl */}
         <AlignmentMatrixControl value={alignment} onChange={setAlignment} />
       </PanelBody>
-
       {/*BorderControl */}
       <BorderControl
         __next40pxDefaultSize
@@ -315,7 +322,6 @@ const clickHandler = () => {
         onChange={setBorder}
         value={border}
       />
-
       {/* BorderBoxControl */}
       <BorderBoxControl
         __next40pxDefaultSize
@@ -324,14 +330,10 @@ const clickHandler = () => {
         onChange={onChange}
         value={borders}
       />
-
       {/*BoxControl   */}
       <BoxControl __next40pxDefaultSize values={values} onChange={setValues} />
-
       {/* PART 2 */}
-
       {/* CheckboxControl */}
-
       <CheckboxControl
         __nextHasNoMarginBottom
         label="Is author"
@@ -339,7 +341,6 @@ const clickHandler = () => {
         checked={isChecked}
         onChange={setChecked}
       />
-
       {/*ClipboardButton  */}
       <ClipboardButton
         variant="primary"
@@ -349,14 +350,12 @@ const clickHandler = () => {
       >
         {hasCopied ? "Copied!" : "Copy Text"}
       </ClipboardButton>
-
       {/* ColorPalette  */}
       <ColorPalette
         colorsPalette={colorsPalette}
         value={color}
         onChange={(color) => setColor(color)}
       />
-
       {/* ColorPicker */}
       <ColorPicker
         ColorPicker={ColorPicker}
@@ -364,7 +363,6 @@ const clickHandler = () => {
         enableAlpha
         defaultValue="#000"
       />
-
       {/* ComboboxControl */}
       <ComboboxControl
         __next40pxDefaultSize
@@ -387,7 +385,6 @@ const clickHandler = () => {
         value={selectedItem}
         onChange={handleChange}
       />
-
       {/* DimensionControl */}
       <DimensionControl
         __nextHasNoMarginBottom
@@ -397,7 +394,6 @@ const clickHandler = () => {
         onChange={(value) => setPaddingSize(value)}
         value={paddingSize}
       />
-
       {/* Disabled */}
       <div>
         {/* Conditionally wrap input with Disabled */}
@@ -408,7 +404,6 @@ const clickHandler = () => {
           {isDisabled ? "Enable Input" : "Disable Input"}
         </Button>
       </div>
-
       {/* DropZone */}
       <DropZoneProvider>
         <div
@@ -426,105 +421,102 @@ const clickHandler = () => {
           />
         </div>
       </DropZoneProvider>
-
       {/* DuotonePicker */}
       <>
-      <DuotonePicker
-        duotonePalette={DUOTONE_PALETTE}
-        colorPalette={COLOR_PALETTE}
-        value={duotone}
-        onChange={setDuotone}
-      />
-      <DuotoneSwatch values={duotone} />
-      </>\
-
-      {/* FocalPointPicker */}
-      <div style={{marginTop: "20px"}}>
-      <FocalPointPicker 
-	url={ "https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg" }
-	dimensions={{
-		width: 400,
-		height: 100,
-	}}
-	value={{
-		x: 0.5,
-		y: 0.5,
-	}}
-	onChange={ ( focalPoint ) => console.log(focalPoint) }
-/>
+        <DuotonePicker
+          duotonePalette={DUOTONE_PALETTE}
+          colorPalette={COLOR_PALETTE}
+          value={duotone}
+          onChange={setDuotone}
+        />
+        <DuotoneSwatch values={duotone} />
+      </>
+      \{/* FocalPointPicker */}
+      <div style={{ marginTop: "20px" }}>
+        <FocalPointPicker
+          url={"https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg"}
+          dimensions={{
+            width: 400,
+            height: 100,
+          }}
+          value={{
+            x: 0.5,
+            y: 0.5,
+          }}
+          onChange={(focalPoint) => console.log(focalPoint)}
+        />
       </div>
       {/* FontSizePicker */}
-      <div style={{marginTop: "20px"}}>
-      <FontSizePicker
-  __next40pxDefaultSize
-  fontSizes={[
-    {
-      name: 'Small',
-      size: 12,
-      slug: 'small'
-    },
-    {
-      name: 'Normal',
-      size: 16,
-      slug: 'normal'
-    },
-    {
-      name: 'Big',
-      size: 26,
-      slug: 'big'
-    }
-  ]}
-  onChange={function noRefCheck(){}}
-  value={16}
-/>
+      <div style={{ marginTop: "20px" }}>
+        <FontSizePicker
+          __next40pxDefaultSize
+          fontSizes={[
+            {
+              name: "Small",
+              size: 12,
+              slug: "small",
+            },
+            {
+              name: "Normal",
+              size: 16,
+              slug: "normal",
+            },
+            {
+              name: "Big",
+              size: 26,
+              slug: "big",
+            },
+          ]}
+          onChange={function noRefCheck() {}}
+          value={16}
+        />
       </div>
       {/* FormToggle */}
-      <div style={{marginTop: "20px", marginLeft:"10px"}}>
-      <FormToggle 
-      checked={ isChecked }
-      onChange={ () => setChecked( ( state ) => ! state ) }
-    />
-      </div>
-
-      {/* FormTokenField */}
-<div style={{marginTop: "20px", marginLeft:"10px"}}>
-<FormTokenField
-            __next40pxDefaultSize
-            value={ selectedContinents }
-            suggestions={ continents }
-            onChange={ ( tokens ) => setSelectedContinents( tokens ) }
-            __nextHasNoMarginBottom
+      <div style={{ marginTop: "20px", marginLeft: "10px" }}>
+        <FormToggle
+          checked={isChecked}
+          onChange={() => setChecked((state) => !state)}
         />
-</div>
-
-
+      </div>
+      {/* FormTokenField */}
+      <div style={{ marginTop: "20px", marginLeft: "10px" }}>
+        <FormTokenField
+          __next40pxDefaultSize
+          value={selectedContinents}
+          suggestions={continents}
+          onChange={(tokens) => setSelectedContinents(tokens)}
+          __nextHasNoMarginBottom
+        />
+      </div>
       {/* GradientPicker */}
-<div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
-<GradientPicker
-      value={ gradient }
-      onChange={ ( currentGradient ) => setGradient( currentGradient ) }
-      gradients={ [
-        {
-          name: 'JShine',
-          gradient:
-            'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
-          slug: 'jshine',
-        },
-        {
-          name: 'Moonlit Asteroid',
-          gradient:
-            'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
-          slug: 'moonlit-asteroid',
-        },
-        {
-          name: 'Rastafarie',
-          gradient:
-            'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
-          slug: 'rastafari',
-        },
-      ] }
-    />
-</div>
+      <div
+        style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}
+      >
+        <GradientPicker
+          value={gradient}
+          onChange={(currentGradient) => setGradient(currentGradient)}
+          gradients={[
+            {
+              name: "JShine",
+              gradient:
+                "linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)",
+              slug: "jshine",
+            },
+            {
+              name: "Moonlit Asteroid",
+              gradient:
+                "linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)",
+              slug: "moonlit-asteroid",
+            },
+            {
+              name: "Rastafarie",
+              gradient:
+                "linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)",
+              slug: "rastafari",
+            },
+          ]}
+        />
+      </div>
       {/* Guide */}
       {/* <Guide
             onFinish={ () => setIsOpen( false ) }
@@ -543,51 +535,125 @@ const clickHandler = () => {
             ] }
         /> */}
       {/* WithConstrainedTabbing */}
-
-<div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
-            { form }
-            <Button variant="secondary" onClick={ toggleConstrain }>
-                { isConstrainedTabbing ? 'Disable' : 'Enable' } constrain
-                tabbing
-            </Button>
-        </div>
-
+      <div
+        style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}
+      >
+        {form}
+        <Button variant="secondary" onClick={toggleConstrain}>
+          {isConstrainedTabbing ? "Disable" : "Enable"} constrain tabbing
+        </Button>
+      </div>
       {/* WithFocusReturn */}
-
-      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
-            <TextControl
-                __nextHasNoMarginBottom
-                __next40pxDefaultSize
-                placeholder="Type something"
-                value={ text }
-                onChange={ ( value ) => setText( value ) }
-            />
-            { text && <EnhancedComponent /> }
-            { text && (
-                <Button variant="secondary" onClick={ unmount }>
-                    Unmount
-                </Button>
-            ) }
-        </div>
+      <div
+        style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}
+      >
+        <TextControl
+          __nextHasNoMarginBottom
+          __next40pxDefaultSize
+          placeholder="Type something"
+          value={text}
+          onChange={(value) => setText(value)}
+        />
+        {text && <EnhancedComponent />}
+        {text && (
+          <Button variant="secondary" onClick={unmount}>
+            Unmount
+          </Button>
+        )}
+      </div>
       {/*  InputControl*/}
-      <div  style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
-<h3>inputControl👇</h3>
-<InputControl
-            value={ value }
-            onChange={ ( nextValue ) => setValue( nextValue ?? '' ) }
+      <div
+        style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}
+      >
+        <h3>inputControl👇</h3>
+        <InputControl
+          value={value}
+          onChange={(nextValue) => setValue(nextValue ?? "")}
         />
       </div>
-
-
       {/* IsolatedEventContainer */}
-      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px", border:"2px solid red", textAlign:"center", paddingTop:"5px"}}>
-      <IsolatedEventContainer
-            className="component-some_component"
-            onClick={ clickHandler }
+      <div
+        style={{
+          marginTop: "20px",
+          marginLeft: "10px",
+          marginBottom: "20px",
+          border: "2px solid red",
+          textAlign: "center",
+          paddingTop: "5px",
+        }}
+      >
+        <IsolatedEventContainer
+          className="component-some_component"
+          onClick={clickHandler}
         >
-            <p>This is an isolated component</p>
+          <p>This is an isolated component</p>
         </IsolatedEventContainer>
       </div>
+
+      {/* KeyboardShortcuts*/}
+      <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+            {/* KeyboardShortcuts component listens for "mod+a" */}
+            <KeyboardShortcuts
+                shortcuts={{
+                    'mod+a': selectAll, // Trigger "selectAll" on "cmd/ctrl + A"
+                }}
+            />
+            <p>
+                [cmd/ctrl + A] Combination pressed?{' '}
+                <strong>{isAllSelected ? 'Yes' : 'No'}</strong>
+            </p>
+            {isAllSelected && (
+                <button
+                    style={{
+                        marginTop: '10px',
+                        padding: '5px 10px',
+                        backgroundColor: '#0073aa',
+                        color: '#fff',
+                        border: 'none',
+                        borderRadius: '3px',
+                        cursor: 'pointer',
+                    }}
+                    onClick={resetSelection}
+                >
+                    Reset
+                </button>
+            )}
+        </div>
+
+      
+      {/* */}
+      <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
+
+      </div>
+      {/* */}
+      <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
+
+      </div>
+      {/* */}
+      <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
+
+      </div>
+      {/* */}
+      <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
+
+      </div>
+      {/* */}
+      <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
+
+      </div>
+      {/* */}
+      <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
+
+      </div>
+      {/* */}
+      <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
+
+      </div>
+      {/* */}
+      <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
+
+      </div>
+
     </>
   );
 };

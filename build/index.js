@@ -1004,7 +1004,46 @@ const General = ({
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["default"], {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__["default"]
-  })));
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px",
+      backgroundColor: "blue"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalItemGroup, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalItem, null, "Code"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalItem, null, "is"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalItem, null, "Poetry"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalItemGroup, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalItem, null, "Code"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalItem, null, "is"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalItem, null, "Poetry"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.MenuGroup, {
+    label: "Settings"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.MenuItem, null, "Setting 1"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.MenuItem, null, "Setting 2"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (General);
 
@@ -1193,7 +1232,7 @@ const COLOR_PALETTE = [{
 }];
 
 // FormTokenField
-const continents = ['Africa', 'America', 'Antarctica', 'Asia', 'Europe', 'Oceania'];
+const continents = ["Africa", "America", "Antarctica", "Asia", "Europe", "Oceania"];
 const ConstrainedTabbing = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.withConstrainedTabbing)(({
   children
 }) => children);
@@ -1314,7 +1353,7 @@ const Style = () => {
   // DuotonePicker
   const [duotone, setDuotone] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(["#000000", "#ffffff"]);
 
-  //FormTokenField 
+  //FormTokenField
   const [selectedContinents, setSelectedContinents] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   console.log(selectedContinents);
 
@@ -1348,19 +1387,33 @@ const Style = () => {
     setIsConstrainedTabbing(state => !state);
   };
   //WithFocusReturn
-  const [text, setText] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [text, setText] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const unmount = () => {
     document.activeElement.blur();
-    setText('');
+    setText("");
   };
   console.log("WithFocusReturn :", text);
 
   // InputControl
-  const [value, setValue] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [value, setValue] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
 
-  // IsolatedEventContainer 
+  // IsolatedEventContainer
   const clickHandler = () => {
-    console.log('Isolated component clicked!');
+    console.log("Isolated component clicked!");
+  };
+
+  //KeyboardShortcuts
+  // State to track if the shortcut is pressed
+  const [isAllSelected, setIsAllSelected] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+
+  // Function to handle "select all" action
+  const selectAll = () => {
+    setIsAllSelected(true);
+  };
+
+  // Function to reset the state (optional)
+  const resetSelection = () => {
+    setIsAllSelected(false);
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
@@ -1471,17 +1524,17 @@ const Style = () => {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FontSizePicker, {
     __next40pxDefaultSize: true,
     fontSizes: [{
-      name: 'Small',
+      name: "Small",
       size: 12,
-      slug: 'small'
+      slug: "small"
     }, {
-      name: 'Normal',
+      name: "Normal",
       size: 16,
-      slug: 'normal'
+      slug: "normal"
     }, {
-      name: 'Big',
+      name: "Big",
       size: 26,
-      slug: 'big'
+      slug: "big"
     }],
     onChange: function noRefCheck() {},
     value: 16
@@ -1514,17 +1567,17 @@ const Style = () => {
     value: gradient,
     onChange: currentGradient => setGradient(currentGradient),
     gradients: [{
-      name: 'JShine',
-      gradient: 'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
-      slug: 'jshine'
+      name: "JShine",
+      gradient: "linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)",
+      slug: "jshine"
     }, {
-      name: 'Moonlit Asteroid',
-      gradient: 'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
-      slug: 'moonlit-asteroid'
+      name: "Moonlit Asteroid",
+      gradient: "linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)",
+      slug: "moonlit-asteroid"
     }, {
-      name: 'Rastafarie',
-      gradient: 'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
-      slug: 'rastafari'
+      name: "Rastafarie",
+      gradient: "linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)",
+      slug: "rastafari"
     }]
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
@@ -1535,7 +1588,7 @@ const Style = () => {
   }, form, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     variant: "secondary",
     onClick: toggleConstrain
-  }, isConstrainedTabbing ? 'Disable' : 'Enable', " constrain tabbing")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, isConstrainedTabbing ? "Disable" : "Enable", " constrain tabbing")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       marginTop: "20px",
       marginLeft: "10px",
@@ -1558,7 +1611,7 @@ const Style = () => {
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "inputControl\uD83D\uDC47"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalInputControl, {
     value: value,
-    onChange: nextValue => setValue(nextValue !== null && nextValue !== void 0 ? nextValue : '')
+    onChange: nextValue => setValue(nextValue !== null && nextValue !== void 0 ? nextValue : "")
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       marginTop: "20px",
@@ -1571,7 +1624,75 @@ const Style = () => {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.IsolatedEventContainer, {
     className: "component-some_component",
     onClick: clickHandler
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "This is an isolated component"))));
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "This is an isolated component"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      padding: '20px',
+      fontFamily: 'Arial, sans-serif'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.KeyboardShortcuts, {
+    shortcuts: {
+      'mod+a': selectAll // Trigger "selectAll" on "cmd/ctrl + A"
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "[cmd/ctrl + A] Combination pressed?", ' ', (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, isAllSelected ? 'Yes' : 'No')), isAllSelected && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    style: {
+      marginTop: '10px',
+      padding: '5px 10px',
+      backgroundColor: '#0073aa',
+      color: '#fff',
+      border: 'none',
+      borderRadius: '3px',
+      cursor: 'pointer'
+    },
+    onClick: resetSelection
+  }, "Reset")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
 

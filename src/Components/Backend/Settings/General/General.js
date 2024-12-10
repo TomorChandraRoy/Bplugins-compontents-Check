@@ -33,6 +33,11 @@ import {
   __experimentalGrid as Grid,
   __experimentalHStack as HStack,
   __experimentalHeading as Heading,
+  MenuItem,
+  MenuGroup,
+  __experimentalItemGroup as ItemGroup,
+  __experimentalItem as Item,
+
 } from "@wordpress/components";
 import {
   Icon,
@@ -300,13 +305,52 @@ const General = ({ children, ...baseProps }) => {
       <Heading>Code is Poetry</Heading>
       </div>
     
-      {/*  */}
+      {/*wordpress icon  */}
       <div  style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
       <Icon icon={ wordpress } />
       </div>
-      {/*  */}
-      {/*  */}
-      {/*  */}
+
+      {/* ItemGroup*/}
+      <div style={{marginTop: "20px", marginLeft:"10px", marginBottom: "20px", backgroundColor:"blue"}}>
+      <ItemGroup>
+            <Item>Code</Item>
+            <Item>is</Item>
+            <Item>Poetry</Item>
+        </ItemGroup>
+      </div>
+
+      {/* Item*/}
+      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
+      <ItemGroup>
+            <Item>Code</Item>
+            <Item>is</Item>
+            <Item>Poetry</Item>
+        </ItemGroup>
+      </div>
+
+      {/* MenuGroup */}
+      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
+      <MenuGroup label="Settings">
+        <MenuItem>Setting 1</MenuItem>
+        <MenuItem>Setting 2</MenuItem>
+    </MenuGroup>
+      </div>
+
+      {/* */}
+      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
+
+      </div>
+
+      {/* */}
+      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
+
+      </div>
+      
+      {/* */}
+      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
+
+      </div>
+
     </PanelBody>
   );
 };
