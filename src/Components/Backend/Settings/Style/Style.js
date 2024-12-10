@@ -31,7 +31,16 @@ import {
   IsolatedEventContainer,
   KeyboardShortcuts,
   MenuItem,
-  MenuGroup, MenuItemsChoice 
+  MenuGroup, MenuItemsChoice,
+  Modal ,
+  TabbableContainer,
+  NavigableMenu,
+  __experimentalNavigation as Navigation,
+  __experimentalNavigationGroup as NavigationGroup,
+  __experimentalNavigationItem as NavigationItem,
+  __experimentalNavigationMenu as NavigationMenu,
+ 
+
 } from "@wordpress/components";
 
 import { useState } from "react";
@@ -125,6 +134,14 @@ const EnhancedComponent = withFocusReturn(() => (
     />
   </div>
 ));
+
+// NavigableContainer
+
+function onNavigate( index, target ) {
+  console.log( `Navigates to ${ index }`, target );
+}
+
+//#Style 
 
 const Style = () => {
   const [angle, setAngle] = useState(0);
@@ -318,6 +335,11 @@ const Style = () => {
            label: 'Code editor',
        },
    ];
+
+  // Modal
+   const [ isOpen, setOpen ] = useState( false );
+   const openModal = () => setOpen( true );
+   const closeModal = () => setOpen( false );
 
   return (
     <>
@@ -661,17 +683,73 @@ const Style = () => {
             />
         </MenuGroup>
       </div>
-      {/* */}
+      {/*Modal */}
       <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
+      <Button variant="secondary" onClick={ openModal }>
+                Open Modal
+            </Button>
+            { isOpen && (
+                <Modal title="This is my modal" onRequestClose={ closeModal }>
+                    <Button variant="secondary" onClick={ closeModal }>
+                        My custom close button
+                    </Button>
+                </Modal>
+            ) }
+      </div>
+
+      {/* NavigableContainer*/}
+      <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
+      <span>Navigable Menu:</span>
+        <NavigableMenu onNavigate={ onNavigate } orientation="horizontal">
+            <Button variant="secondary">Item 1</Button>
+            <Button variant="secondary">Item 2</Button>
+            <Button variant="secondary">Item 3</Button>
+        </NavigableMenu>
+
+        <span>Tabbable Container:</span>
+        <TabbableContainer onNavigate={ onNavigate }>
+            <Button variant="secondary" tabIndex="0">
+                Section 1
+            </Button>
+            <Button variant="secondary" tabIndex="0">
+                Section 2
+            </Button>
+            <Button variant="secondary" tabIndex="0">
+                Section 3
+            </Button>
+            <Button variant="secondary" tabIndex="0">
+                Section 4
+            </Button>
+        </TabbableContainer>
 
       </div>
-      {/* */}
+      {/*Navigation */}
       <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
+      <Navigation>
+        <NavigationMenu title="Home">
+            <NavigationGroup title="Group 1">
+                <NavigationItem item="item-1" title="Item 1" />
+                <NavigationItem item="item-2" title="Item 2" />
+            </NavigationGroup>
+            <NavigationGroup title="Group 2">
+                <NavigationItem
+                    item="item-3"
+                    navigateToMenu="category"
+                    title="Category"
+                />
+            </NavigationGroup>
+        </NavigationMenu>
 
-      </div>
-      {/* */}
-      <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
-
+        <NavigationMenu
+            backButtonLabel="Home"
+            menu="category"
+            parentMenu="root"
+            title="Category"
+        >
+            <NavigationItem badge="1" item="child-1" title="Child 1" />
+            <NavigationItem item="child-2" title="Child 2" />
+        </NavigationMenu>
+    </Navigation>
       </div>
       {/* */}
       <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>

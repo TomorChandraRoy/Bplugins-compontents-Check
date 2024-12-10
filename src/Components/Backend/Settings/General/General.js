@@ -38,6 +38,7 @@ import {
   __experimentalItemGroup as ItemGroup,
   __experimentalItem as Item,
 
+
 } from "@wordpress/components";
 import {
   Icon,
@@ -336,14 +337,25 @@ const General = ({ children, ...baseProps }) => {
     </MenuGroup>
       </div>
 
-      {/* */}
+      {/*Navigator */}
+      {/* <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
+      <Navigator initialPath="/">
+        <Navigator.Screen path="/">
+            <p>This is the home screen.</p>
+            <Navigator.Button path="/child">
+                Navigate to child screen.
+            </Navigator.Button>
+        </Navigator.Screen>
+        <Navigator.Screen path="/child">
+            <p>This is the child screen.</p>
+            <Navigator.BackButton>Go back</Navigator.BackButton>
+        </Navigator.Screen>
+    </Navigator>
+      </div> */}
+
+      {/*Notice */}
       <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
-
-      </div>
-
-      {/* */}
-      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
-
+      <Notice status="error">An unknown error occurred.</Notice>
       </div>
       
       {/* */}

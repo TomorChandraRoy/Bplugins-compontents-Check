@@ -1031,13 +1031,9 @@ const General = ({
       marginLeft: "10px",
       marginBottom: "20px"
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    style: {
-      marginTop: "20px",
-      marginLeft: "10px",
-      marginBottom: "20px"
-    }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Notice, {
+    status: "error"
+  }, "An unknown error occurred.")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       marginTop: "20px",
       marginLeft: "10px",
@@ -1244,6 +1240,15 @@ const EnhancedComponent = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.
   autoFocus: true,
   onChange: () => {}
 })));
+
+// NavigableContainer
+
+function onNavigate(index, target) {
+  console.log(`Navigates to ${index}`, target);
+}
+
+//#Style 
+
 const Style = () => {
   const [angle, setAngle] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   // console.log("AnglePickerControl:", angle);
@@ -1428,6 +1433,11 @@ const Style = () => {
     value: 'text',
     label: 'Code editor'
   }];
+
+  // Modal
+  const [isOpen, setOpen] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const openModal = () => setOpen(true);
+  const closeModal = () => setOpen(false);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color Picker", "b-blocks"),
@@ -1685,19 +1695,79 @@ const Style = () => {
       marginLeft: "10px",
       marginBottom: "20px"
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "secondary",
+    onClick: openModal
+  }, "Open Modal"), isOpen && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Modal, {
+    title: "This is my modal",
+    onRequestClose: closeModal
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "secondary",
+    onClick: closeModal
+  }, "My custom close button"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       marginTop: "20px",
       marginLeft: "10px",
       marginBottom: "20px"
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Navigable Menu:"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.NavigableMenu, {
+    onNavigate: onNavigate,
+    orientation: "horizontal"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "secondary"
+  }, "Item 1"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "secondary"
+  }, "Item 2"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "secondary"
+  }, "Item 3")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Tabbable Container:"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TabbableContainer, {
+    onNavigate: onNavigate
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "secondary",
+    tabIndex: "0"
+  }, "Section 1"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "secondary",
+    tabIndex: "0"
+  }, "Section 2"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "secondary",
+    tabIndex: "0"
+  }, "Section 3"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "secondary",
+    tabIndex: "0"
+  }, "Section 4"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       marginTop: "20px",
       marginLeft: "10px",
       marginBottom: "20px"
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNavigation, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNavigationMenu, {
+    title: "Home"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNavigationGroup, {
+    title: "Group 1"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNavigationItem, {
+    item: "item-1",
+    title: "Item 1"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNavigationItem, {
+    item: "item-2",
+    title: "Item 2"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNavigationGroup, {
+    title: "Group 2"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNavigationItem, {
+    item: "item-3",
+    navigateToMenu: "category",
+    title: "Category"
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNavigationMenu, {
+    backButtonLabel: "Home",
+    menu: "category",
+    parentMenu: "root",
+    title: "Category"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNavigationItem, {
+    badge: "1",
+    item: "child-1",
+    title: "Child 1"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNavigationItem, {
+    item: "child-2",
+    title: "Child 2"
+  })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       marginTop: "20px",
       marginLeft: "10px",
