@@ -31,6 +31,7 @@ import {
   IsolatedEventContainer,
   KeyboardShortcuts,
   MenuItem,
+  MenuGroup, MenuItemsChoice 
 } from "@wordpress/components";
 
 import { useState } from "react";
@@ -305,6 +306,18 @@ const Style = () => {
     // MenuItem
     const [ isActive, setIsActive ] = useState( true );
 
+   //MenuItemsChoice
+   const [ mode, setMode ] = useState( 'visual' );
+   const choices = [
+       {
+           value: 'visual',
+           label: 'Visual editor',
+       },
+       {
+           value: 'text',
+           label: 'Code editor',
+       },
+   ];
 
   return (
     <>
@@ -637,10 +650,16 @@ const Style = () => {
         </MenuItem>
       </div>
 
-      
-      {/* */}
-      <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
 
+      {/*MenuItemsChoice */}
+      <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
+      <MenuGroup label="Editor">
+            <MenuItemsChoice
+                choices={ choices }
+                value={ mode }
+                onSelect={ ( newMode ) => setMode( newMode ) }
+            />
+        </MenuGroup>
       </div>
       {/* */}
       <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>

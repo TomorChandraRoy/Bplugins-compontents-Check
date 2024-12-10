@@ -1418,6 +1418,16 @@ const Style = () => {
 
   // MenuItem
   const [isActive, setIsActive] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+
+  //MenuItemsChoice
+  const [mode, setMode] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('visual');
+  const choices = [{
+    value: 'visual',
+    label: 'Visual editor'
+  }, {
+    value: 'text',
+    label: 'Code editor'
+  }];
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color Picker", "b-blocks"),
@@ -1663,7 +1673,13 @@ const Style = () => {
       marginLeft: "10px",
       marginBottom: "20px"
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.MenuGroup, {
+    label: "Editor"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.MenuItemsChoice, {
+    choices: choices,
+    value: mode,
+    onSelect: newMode => setMode(newMode)
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       marginTop: "20px",
       marginLeft: "10px",
