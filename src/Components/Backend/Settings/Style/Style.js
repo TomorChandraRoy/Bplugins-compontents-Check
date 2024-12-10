@@ -30,6 +30,7 @@ import {
   __experimentalInputControl as InputControl,
   IsolatedEventContainer,
   KeyboardShortcuts,
+  MenuItem,
 } from "@wordpress/components";
 
 import { useState } from "react";
@@ -300,6 +301,10 @@ const Style = () => {
     const resetSelection = () => {
         setIsAllSelected(false);
     };
+
+    // MenuItem
+    const [ isActive, setIsActive ] = useState( true );
+
 
   return (
     <>
@@ -621,10 +626,18 @@ const Style = () => {
         </div>
 
       
-      {/* */}
+      {/* MenuItem */}
       <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
-
+      <MenuItem
+            icon={ isActive ? 'yes' : 'no' }
+            isSelected={ isActive }
+            onClick={ () => setIsActive( ( state ) => ! state ) }
+        >
+            Toggle
+        </MenuItem>
       </div>
+
+      
       {/* */}
       <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
 

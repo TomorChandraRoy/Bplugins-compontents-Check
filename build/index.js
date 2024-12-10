@@ -1415,6 +1415,9 @@ const Style = () => {
   const resetSelection = () => {
     setIsAllSelected(false);
   };
+
+  // MenuItem
+  const [isActive, setIsActive] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color Picker", "b-blocks"),
@@ -1650,7 +1653,11 @@ const Style = () => {
       marginLeft: "10px",
       marginBottom: "20px"
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.MenuItem, {
+    icon: isActive ? 'yes' : 'no',
+    isSelected: isActive,
+    onClick: () => setIsActive(state => !state)
+  }, "Toggle")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       marginTop: "20px",
       marginLeft: "10px",
