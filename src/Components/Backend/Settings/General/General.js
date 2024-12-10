@@ -38,7 +38,6 @@ import {
   __experimentalItemGroup as ItemGroup,
   __experimentalItem as Item,
 
-
 } from "@wordpress/components";
 import {
   Icon,
@@ -358,10 +357,8 @@ const General = ({ children, ...baseProps }) => {
       <Notice status="error">An unknown error occurred.</Notice>
       </div>
       
-      {/* */}
-      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
 
-      </div>
+
 
     </PanelBody>
   );

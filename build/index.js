@@ -1033,13 +1033,7 @@ const General = ({
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Notice, {
     status: "error"
-  }, "An unknown error occurred.")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    style: {
-      marginTop: "20px",
-      marginLeft: "10px",
-      marginBottom: "20px"
-    }
-  }));
+  }, "An unknown error occurred.")));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (General);
 
@@ -1438,6 +1432,12 @@ const Style = () => {
   const [isOpen, setOpen] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
+
+  // NumberControl
+  const [valuee, setValuee] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(10);
+
+  // #main
+
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color Picker", "b-blocks"),
@@ -1773,7 +1773,13 @@ const Style = () => {
       marginLeft: "10px",
       marginBottom: "20px"
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNumberControl, {
+    __next40pxDefaultSize: true,
+    isShiftStepEnabled: true,
+    onChange: setValuee,
+    shiftStep: 10,
+    value: valuee
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       marginTop: "20px",
       marginLeft: "10px",

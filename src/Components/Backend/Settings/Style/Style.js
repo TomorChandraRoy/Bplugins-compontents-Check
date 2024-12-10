@@ -39,7 +39,7 @@ import {
   __experimentalNavigationGroup as NavigationGroup,
   __experimentalNavigationItem as NavigationItem,
   __experimentalNavigationMenu as NavigationMenu,
- 
+  __experimentalNumberControl as NumberControl,
 
 } from "@wordpress/components";
 
@@ -140,6 +140,8 @@ const EnhancedComponent = withFocusReturn(() => (
 function onNavigate( index, target ) {
   console.log( `Navigates to ${ index }`, target );
 }
+
+
 
 //#Style 
 
@@ -340,6 +342,11 @@ const Style = () => {
    const [ isOpen, setOpen ] = useState( false );
    const openModal = () => setOpen( true );
    const closeModal = () => setOpen( false );
+
+  // NumberControl
+  const [ valuee, setValuee ] = useState( 10 );
+
+// #main
 
   return (
     <>
@@ -751,10 +758,19 @@ const Style = () => {
         </NavigationMenu>
     </Navigation>
       </div>
-      {/* */}
-      <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
 
+      {/* NumberControl+*/}
+      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
+      <NumberControl
+            __next40pxDefaultSize
+            isShiftStepEnabled={ true }
+            onChange={ setValuee }
+            shiftStep={ 10 }
+            value={ valuee }
+        />
       </div>
+
+
       {/* */}
       <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
 
