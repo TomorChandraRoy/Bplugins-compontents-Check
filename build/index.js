@@ -827,6 +827,12 @@ const General = ({
       console.log("Generated Image URL:", fileURL);
     }
   };
+  // ToggleControl
+  const [isChecked, setIsChecked] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const handleToggleChange = value => {
+    console.log('Toggle state:', value);
+    setIsChecked(value);
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Purpose", "b-blocks"),
@@ -1069,7 +1075,12 @@ const General = ({
     title: "My Block Settings",
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"],
     initialOpen: true
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, "My Panel Inputs and Labels"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ProgressBar, null), ";");
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, "My Panel Inputs and Labels"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ProgressBar, null), ";", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+    label: "Fixed Background",
+    help: isChecked ? 'Has fixed background.' : 'No fixed background.',
+    checked: isChecked,
+    onChange: handleToggleChange
+  }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (General);
 

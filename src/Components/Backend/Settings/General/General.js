@@ -42,6 +42,7 @@ import {
   __experimentalItem as Item,
   PanelRow,
   ProgressBar,
+  ToggleControl,
 } from "@wordpress/components";
 import {
   Icon,
@@ -53,6 +54,7 @@ import {
   wordpress,
 } from "@wordpress/icons";
 import { useState } from "react";
+
 
 const General = ({ children, ...baseProps }) => {
   const [value, setValue] = useState("");
@@ -73,6 +75,26 @@ const General = ({ children, ...baseProps }) => {
       console.log("Generated Image URL:", fileURL);
     }
   };
+// ToggleControl
+const [isChecked, setIsChecked] = useState(false);
+
+const handleToggleChange = (value) => {
+    console.log('Toggle state:', value);
+    setIsChecked(value);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <PanelBody
       className="bPlPanelBody"
@@ -383,8 +405,19 @@ const General = ({ children, ...baseProps }) => {
           <PanelRow>My Panel Inputs and Labels</PanelRow>
         </PanelBody>
       </Panel>
+
       {/* ProgressBar */}
       <ProgressBar />;
+
+{/* ToggleControl */}
+<ToggleControl
+
+label="Fixed Background"
+help={isChecked ? 'Has fixed background.' : 'No fixed background.'}
+checked={isChecked}
+onChange={handleToggleChange}
+        />
+
     </PanelBody>
   );
 };
