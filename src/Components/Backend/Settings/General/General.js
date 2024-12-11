@@ -37,7 +37,8 @@ import {
   MenuGroup,
   __experimentalItemGroup as ItemGroup,
   __experimentalItem as Item,
-  PanelRow
+  PanelRow,
+  ProgressBar
 
 } from "@wordpress/components";
 import {
@@ -364,6 +365,8 @@ const General = ({ children, ...baseProps }) => {
             <PanelRow>My Panel Inputs and Labels</PanelRow>
         </PanelBody>
     </Panel>
+{/* ProgressBar */}
+<ProgressBar />;
 
 
     </PanelBody>
