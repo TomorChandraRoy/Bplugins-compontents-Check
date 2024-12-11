@@ -40,7 +40,8 @@ import {
   __experimentalNavigationItem as NavigationItem,
   __experimentalNavigationMenu as NavigationMenu,
   __experimentalNumberControl as NumberControl,
-  Popover
+  Popover,
+  QueryControls
 } from "@wordpress/components";
 
 import { useState } from "react";
@@ -141,6 +142,31 @@ function onNavigate( index, target ) {
   console.log( `Navigates to ${ index }`, target );
 }
 
+const QUERY_DEFAULTS = {
+  category: 1,
+  categories: [
+      {
+          id: 1,
+          name: 'Category 1',
+          parent: 0,
+      },
+      {
+          id: 2,
+          name: 'Category 1b',
+          parent: 1,
+      },
+      {
+          id: 3,
+          name: 'Category 2',
+          parent: 0,
+      },
+  ],
+  maxItems: 20,
+  minItems: 1,
+  numberOfItems: 10,
+  order: 'asc',
+  orderBy: 'title',
+};
 
 
 //#Style 
@@ -352,6 +378,15 @@ const Style = () => {
   const toggleVisible = () => {
       setIsVisible( ( state ) => ! state );
   };
+
+// QueryControls
+  const [ query, setQuery ] = useState( QUERY_DEFAULTS );
+  const { category, categories, maxItems, minItems, numberOfItems, order, orderBy  } = query;
+
+  const updateQuery = ( newQuery ) => {
+      setQuery( { ...query, ...newQuery } );
+  };
+
 
 // #main
 
@@ -786,9 +821,19 @@ const Style = () => {
         </Button>
       </div>
 
-      {/* */}
+      {/* QueryControls*/}
       <div style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
-
+      <QueryControls
+            { ...{ maxItems, minItems, numberOfItems, order, orderBy } }
+            onOrderByChange={ ( newOrderBy ) => updateQuery( { orderBy: newOrderBy } ) }
+            onOrderChange={ ( newOrder ) => updateQuery( { order: newOrder } ) }
+            categoriesList={ categories }
+            selectedCategoryId={ category }
+            onCategoryChange={ ( newCategory ) => updateQuery( { category: newCategory } ) }
+            onNumberOfItemsChange={ ( newNumberOfItems ) =>
+                updateQuery( { numberOfItems: newNumberOfItems } )
+            }
+        />
       </div>
 
     </>

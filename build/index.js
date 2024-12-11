@@ -817,7 +817,8 @@ const General = ({
   } = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.useBaseControlProps)(baseProps);
   const [date, setDate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new Date());
   const [imageURL, setImageURL] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  console.log(imageURL);
+  // console.log(imageURL);
+
   const handleFileChange = e => {
     const file = e.target.files[0]; // প্রথম ফাইলটি নিন
     if (file) {
@@ -1246,6 +1247,27 @@ const EnhancedComponent = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.
 function onNavigate(index, target) {
   console.log(`Navigates to ${index}`, target);
 }
+const QUERY_DEFAULTS = {
+  category: 1,
+  categories: [{
+    id: 1,
+    name: 'Category 1',
+    parent: 0
+  }, {
+    id: 2,
+    name: 'Category 1b',
+    parent: 1
+  }, {
+    id: 3,
+    name: 'Category 2',
+    parent: 0
+  }],
+  maxItems: 20,
+  minItems: 1,
+  numberOfItems: 10,
+  order: 'asc',
+  orderBy: 'title'
+};
 
 //#Style 
 
@@ -1446,6 +1468,24 @@ const Style = () => {
   const [isVisible, setIsVisible] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const toggleVisible = () => {
     setIsVisible(state => !state);
+  };
+
+  // QueryControls
+  const [query, setQuery] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(QUERY_DEFAULTS);
+  const {
+    category,
+    categories,
+    maxItems,
+    minItems,
+    numberOfItems,
+    order,
+    orderBy
+  } = query;
+  const updateQuery = newQuery => {
+    setQuery({
+      ...query,
+      ...newQuery
+    });
   };
 
   // #main
@@ -1806,7 +1846,27 @@ const Style = () => {
       marginLeft: "10px",
       marginBottom: "20px"
     }
-  }));
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.QueryControls, {
+    maxItems,
+    minItems,
+    numberOfItems,
+    order,
+    orderBy,
+    onOrderByChange: newOrderBy => updateQuery({
+      orderBy: newOrderBy
+    }),
+    onOrderChange: newOrder => updateQuery({
+      order: newOrder
+    }),
+    categoriesList: categories,
+    selectedCategoryId: category,
+    onCategoryChange: newCategory => updateQuery({
+      category: newCategory
+    }),
+    onNumberOfItemsChange: newNumberOfItems => updateQuery({
+      numberOfItems: newNumberOfItems
+    })
+  })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
 

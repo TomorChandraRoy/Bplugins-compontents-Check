@@ -69,7 +69,7 @@ const General = ({ children, ...baseProps }) => {
 
 
   const [imageURL, setImageURL] = useState(null);
-  console.log(imageURL);
+  // console.log(imageURL);
   
 
   const handleFileChange = (e) => {
@@ -365,6 +365,7 @@ const General = ({ children, ...baseProps }) => {
             <PanelRow>My Panel Inputs and Labels</PanelRow>
         </PanelBody>
     </Panel>
+
 {/* ProgressBar */}
 <ProgressBar />;
 
