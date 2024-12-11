@@ -1442,6 +1442,12 @@ const Style = () => {
   // NumberControl
   const [valuee, setValuee] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(10);
 
+  // Popover
+  const [isVisible, setIsVisible] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const toggleVisible = () => {
+    setIsVisible(state => !state);
+  };
+
   // #main
 
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
@@ -1791,7 +1797,10 @@ const Style = () => {
       marginLeft: "10px",
       marginBottom: "20px"
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    variant: "secondary",
+    onClick: toggleVisible
+  }, "Toggle Popover!", isVisible && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Popover, null, "Popover is toggled!"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       marginTop: "20px",
       marginLeft: "10px",
