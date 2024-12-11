@@ -824,7 +824,7 @@ const General = ({
     if (file) {
       const fileURL = URL.createObjectURL(file); // অস্থায়ী URL তৈরি করুন
       setImageURL(fileURL); // State-এ সেট করুন
-      console.log('Generated Image URL:', fileURL);
+      console.log("Generated Image URL:", fileURL);
     }
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
@@ -932,10 +932,10 @@ const General = ({
     renderContent: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "This is the content of the popover.")
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     style: {
-      background: 'transparent',
+      background: "transparent",
       border: 0,
       height: 150,
-      position: 'relative',
+      position: "relative",
       width: 150,
       marginTop: "20px"
     }
@@ -959,7 +959,7 @@ const General = ({
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FocusableIframe, {
     src: "https://www.youtube.com/embed/xK0kKbNXZc4",
-    onFocus: () => console.log('iframe is focused')
+    onFocus: () => console.log("iframe is focused")
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Upload an image below: "), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormFileUpload, {
     accept: "image/*",
     onChange: handleFileChange,
@@ -971,7 +971,7 @@ const General = ({
     }, "Upload Image")
   }), imageURL && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
-      marginTop: '20px'
+      marginTop: "20px"
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: imageURL,
@@ -992,6 +992,35 @@ const General = ({
       marginBottom: "20px"
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalHStack, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalText, null, "Code"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalText, null, "is"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalText, null, "Poetry"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalText, {
+    variant: "title.large",
+    as: "h1"
+  }, "Title Large"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalText, {
+    variant: "title.medium",
+    as: "h2"
+  }, "Title Medium"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalText, {
+    variant: "title.small",
+    as: "h3"
+  }, "Title Small"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalText, {
+    variant: "subtitle"
+  }, "Subtitle"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalText, {
+    variant: "subtitle.small"
+  }, "Subtitle Small"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalText, {
+    variant: "body"
+  }, "Body"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalText, {
+    variant: "body.small"
+  }, "Body Small"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalText, {
+    variant: "button"
+  }, "Button"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalText, {
+    variant: "caption"
+  }, "Caption"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalText, {
+    variant: "label"
+  }, "Label")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       marginTop: "20px",
       marginLeft: "10px",

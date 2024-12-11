@@ -28,7 +28,10 @@ import {
   Dropdown,
   __experimentalElevation as Elevation,
   ExternalLink,
-  Flex, FlexBlock, FlexItem,FocusableIframe,
+  Flex,
+  FlexBlock,
+  FlexItem,
+  FocusableIframe,
   FormFileUpload,
   __experimentalGrid as Grid,
   __experimentalHStack as HStack,
@@ -38,8 +41,7 @@ import {
   __experimentalItemGroup as ItemGroup,
   __experimentalItem as Item,
   PanelRow,
-  ProgressBar
-
+  ProgressBar,
 } from "@wordpress/components";
 import {
   Icon,
@@ -48,15 +50,9 @@ import {
   arrowRight,
   arrowUp,
   arrowDown,
-  wordpress 
+  wordpress,
 } from "@wordpress/icons";
 import { useState } from "react";
-
-
-
-
-
-
 
 const General = ({ children, ...baseProps }) => {
   const [value, setValue] = useState("");
@@ -66,19 +62,16 @@ const General = ({ children, ...baseProps }) => {
 
   const [date, setDate] = useState(new Date());
 
-
-
   const [imageURL, setImageURL] = useState(null);
   // console.log(imageURL);
-  
 
   const handleFileChange = (e) => {
-      const file = e.target.files[0]; // প্রথম ফাইলটি নিন
-      if (file) {
-          const fileURL = URL.createObjectURL(file); // অস্থায়ী URL তৈরি করুন
-          setImageURL(fileURL); // State-এ সেট করুন
-          console.log('Generated Image URL:', fileURL);
-      }
+    const file = e.target.files[0]; // প্রথম ফাইলটি নিন
+    if (file) {
+      const fileURL = URL.createObjectURL(file); // অস্থায়ী URL তৈরি করুন
+      setImageURL(fileURL); // State-এ সেট করুন
+      console.log("Generated Image URL:", fileURL);
+    }
   };
   return (
     <PanelBody
@@ -218,126 +211,151 @@ const General = ({ children, ...baseProps }) => {
         )}
         renderContent={() => <div>This is the content of the popover.</div>}
       />
-
       {/* Elevation */}
-
-  <button
-  style={{
-    background: 'transparent',
-    border: 0,
-    height: 150,
-    position: 'relative',
-    width: 150,
-    marginTop: "20px" 
-  }}
->
-  Click me
-  <Elevation
-    isInteractive
-    value={14}
-  />
-</button>
-
+      <button
+        style={{
+          background: "transparent",
+          border: 0,
+          height: 150,
+          position: "relative",
+          width: 150,
+          marginTop: "20px",
+        }}
+      >
+        Click me
+        <Elevation isInteractive value={14} />
+      </button>
       {/* ExternalLink */}
       <div style={{ marginTop: "20px" }}>
-    <ExternalLink href="https://wordpress.org">
-        WordPress.org
-    </ExternalLink>
-</div>
+        <ExternalLink href="https://wordpress.org">WordPress.org</ExternalLink>
+      </div>
       {/* FlexBlock */}
       {/* FlexItem */}
       {/* Flex */}
-      <Flex style={{background:"red", marginTop: "20px"}}>
-            <FlexItem>
-                <p>Code</p>
-            </FlexItem>
-            <FlexBlock>
-                <p>Poetry</p>
-            </FlexBlock>
-        </Flex>
+      <Flex style={{ background: "red", marginTop: "20px" }}>
+        <FlexItem>
+          <p>Code</p>
+        </FlexItem>
+        <FlexBlock>
+          <p>Poetry</p>
+        </FlexBlock>
+      </Flex>
       {/* FocusableIframe */}
-      <div style={{marginTop: "20px"}}>
-      <FocusableIframe
-	src="https://www.youtube.com/embed/xK0kKbNXZc4"
-	onFocus={ () => console.log( 'iframe is focused' ) }
-/>
+      <div style={{ marginTop: "20px" }}>
+        <FocusableIframe
+          src="https://www.youtube.com/embed/xK0kKbNXZc4"
+          onFocus={() => console.log("iframe is focused")}
+        />
       </div>
       {/* FormFileUpload */}
       <div>
-            <p>Upload an image below: </p>
-            <FormFileUpload
-                accept="image/*"
-                onChange={handleFileChange}
-                render={({ openFileDialog }) => (
-                    <Button isSecondary onClick={openFileDialog}>
-                        Upload Image
-                    </Button>
-                )}
-            />
-            {imageURL && (
-                <div style={{ marginTop: '20px' }}>
-                    <p>
-                        <a href={imageURL} target="_blank" rel="noopener noreferrer">
-                            Click here to view the image
-                        </a>
-                    </p>
-                </div>
-            )}
-        </div>
-
+        <p>Upload an image below: </p>
+        <FormFileUpload
+          accept="image/*"
+          onChange={handleFileChange}
+          render={({ openFileDialog }) => (
+            <Button isSecondary onClick={openFileDialog}>
+              Upload Image
+            </Button>
+          )}
+        />
+        {imageURL && (
+          <div style={{ marginTop: "20px" }}>
+            <p>
+              <a href={imageURL} target="_blank" rel="noopener noreferrer">
+                Click here to view the image
+              </a>
+            </p>
+          </div>
+        )}
+      </div>
       {/* Grid */}
-      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
-      <Grid columns={ 3 }>
-            <Text>Code</Text>
-            <Text>is</Text>
-            <Text>Poetry</Text>
+      <div
+        style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}
+      >
+        <Grid columns={3}>
+          <Text>Code</Text>
+          <Text>is</Text>
+          <Text>Poetry</Text>
         </Grid>
       </div>
       {/*HStack  */}
-      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
-      <HStack>
-            <Text>Code</Text>
-            <Text>is</Text>
-            <Text>Poetry</Text>
+      <div
+        style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}
+      >
+        <HStack>
+          <Text>Code</Text>
+          <Text>is</Text>
+          <Text>Poetry</Text>
         </HStack>
       </div>
-
+      {/* text  */}
+      <div
+        style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}
+      >
+        <Text variant="title.large" as="h1">
+          Title Large
+        </Text>
+        <Text variant="title.medium" as="h2">
+          Title Medium
+        </Text>
+        <Text variant="title.small" as="h3">
+          Title Small
+        </Text>
+        <Text variant="subtitle">Subtitle</Text>
+        <Text variant="subtitle.small">Subtitle Small</Text>
+        <Text variant="body">Body</Text>
+        <Text variant="body.small">Body Small</Text>
+        <Text variant="button">Button</Text>
+        <Text variant="caption">Caption</Text>
+        <Text variant="label">Label</Text>
+      </div>
       {/* Heading */}
-      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
-      <Heading>Code is Poetry</Heading>
+      <div
+        style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}
+      >
+        <Heading>Code is Poetry</Heading>
       </div>
-    
       {/*wordpress icon  */}
-      <div  style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
-      <Icon icon={ wordpress } />
+      <div
+        style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}
+      >
+        <Icon icon={wordpress} />
       </div>
-
       {/* ItemGroup*/}
-      <div style={{marginTop: "20px", marginLeft:"10px", marginBottom: "20px", backgroundColor:"blue"}}>
-      <ItemGroup>
-            <Item>Code</Item>
-            <Item>is</Item>
-            <Item>Poetry</Item>
+      <div
+        style={{
+          marginTop: "20px",
+          marginLeft: "10px",
+          marginBottom: "20px",
+          backgroundColor: "blue",
+        }}
+      >
+        <ItemGroup>
+          <Item>Code</Item>
+          <Item>is</Item>
+          <Item>Poetry</Item>
         </ItemGroup>
       </div>
-
       {/* Item*/}
-      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
-      <ItemGroup>
-            <Item>Code</Item>
-            <Item>is</Item>
-            <Item>Poetry</Item>
+      <div
+        style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}
+      >
+        <ItemGroup>
+          <Item>Code</Item>
+          <Item>is</Item>
+          <Item>Poetry</Item>
         </ItemGroup>
       </div>
-
       {/* MenuGroup */}
-      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
-      <MenuGroup label="Settings">
-        <MenuItem>Setting 1</MenuItem>
-        <MenuItem>Setting 2</MenuItem>
-    </MenuGroup>
+      <div
+        style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}
+      >
+        <MenuGroup label="Settings">
+          <MenuItem>Setting 1</MenuItem>
+          <MenuItem>Setting 2</MenuItem>
+        </MenuGroup>
       </div>
-
       {/*Navigator */}
       {/* <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
       <Navigator initialPath="/">
@@ -353,23 +371,20 @@ const General = ({ children, ...baseProps }) => {
         </Navigator.Screen>
     </Navigator>
       </div> */}
-
       {/*Notice */}
-      <div style={{marginTop: "20px", marginLeft:"10px",marginBottom: "20px",}}>
-      <Notice status="error">An unknown error occurred.</Notice>
+      <div
+        style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}
+      >
+        <Notice status="error">An unknown error occurred.</Notice>
       </div>
-      
-{/* Panel */}
-<Panel header="My Panel">
-        <PanelBody title="My Block Settings" icon={ more } initialOpen={ true }>
-            <PanelRow>My Panel Inputs and Labels</PanelRow>
+      {/* Panel */}
+      <Panel header="My Panel">
+        <PanelBody title="My Block Settings" icon={more} initialOpen={true}>
+          <PanelRow>My Panel Inputs and Labels</PanelRow>
         </PanelBody>
-    </Panel>
-
-{/* ProgressBar */}
-<ProgressBar />;
-
-
+      </Panel>
+      {/* ProgressBar */}
+      <ProgressBar />;
     </PanelBody>
   );
 };
