@@ -1534,6 +1534,11 @@ const Style = () => {
   // UnitControl
   const [valueUnit, setValueUnit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("15px");
 
+  // TabPanel
+  const onSelect = tabName => {
+    console.log('Selecting tab', tabName);
+  };
+
   // #main
 
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
@@ -1934,7 +1939,26 @@ const Style = () => {
     __next40pxDefaultSize: true,
     onChange: setValueUnit,
     value: valueUnit
-  }), ";"));
+  }), ";"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TabPanel, {
+    className: "my-tab-panel",
+    activeClass: "active-tab",
+    onSelect: onSelect,
+    tabs: [{
+      name: 'tab1',
+      title: 'Tab 1',
+      className: 'tab-one'
+    }, {
+      name: 'tab2',
+      title: 'Tab 2',
+      className: 'tab-two'
+    }]
+  }, tab => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, tab.title))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
 

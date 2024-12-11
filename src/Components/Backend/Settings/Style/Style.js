@@ -45,6 +45,7 @@ import {
   Popover,
   QueryControls,
   RadioControl,
+  TabPanel
 } from "@wordpress/components";
 
 import { useState } from "react";
@@ -409,6 +410,10 @@ const Style = () => {
   // UnitControl
   const [valueUnit, setValueUnit] = useState("15px");
 
+  // TabPanel
+  const onSelect = ( tabName ) => {
+    console.log( 'Selecting tab', tabName );
+};
 
 
 
@@ -899,7 +904,28 @@ const Style = () => {
 <UnitControl __next40pxDefaultSize onChange={ setValueUnit } value={ valueUnit } />;
 </div>
 
-
+{/* TabPanel */}
+<div  style={{ marginTop: "20px", marginLeft: "10px", marginBottom: "20px" }}>
+<TabPanel
+        className="my-tab-panel"
+        activeClass="active-tab"
+        onSelect={ onSelect }
+        tabs={ [
+            {
+                name: 'tab1',
+                title: 'Tab 1',
+                className: 'tab-one',
+            },
+            {
+                name: 'tab2',
+                title: 'Tab 2',
+                className: 'tab-two',
+            },
+        ] }
+    >
+        { ( tab ) => <p>{ tab.title }</p> }
+    </TabPanel>
+</div>
 
     </>
   );
