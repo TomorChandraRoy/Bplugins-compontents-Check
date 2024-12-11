@@ -1291,25 +1291,25 @@ const QUERY_DEFAULTS = {
   category: 1,
   categories: [{
     id: 1,
-    name: 'Category 1',
+    name: "Category 1",
     parent: 0
   }, {
     id: 2,
-    name: 'Category 1b',
+    name: "Category 1b",
     parent: 1
   }, {
     id: 3,
-    name: 'Category 2',
+    name: "Category 2",
     parent: 0
   }],
   maxItems: 20,
   minItems: 1,
   numberOfItems: 10,
-  order: 'asc',
-  orderBy: 'title'
+  order: "asc",
+  orderBy: "title"
 };
 
-//#Style 
+//#Style
 
 const Style = () => {
   const [angle, setAngle] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
@@ -1487,13 +1487,13 @@ const Style = () => {
   const [isActive, setIsActive] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
 
   //MenuItemsChoice
-  const [mode, setMode] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('visual');
+  const [mode, setMode] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("visual");
   const choices = [{
-    value: 'visual',
-    label: 'Visual editor'
+    value: "visual",
+    label: "Visual editor"
   }, {
-    value: 'text',
-    label: 'Code editor'
+    value: "text",
+    label: "Code editor"
   }];
 
   // Modal
@@ -1529,7 +1529,10 @@ const Style = () => {
   };
 
   // RadioControl
-  const [option, setOption] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('a');
+  const [option, setOption] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("a");
+
+  // UnitControl
+  const [valueUnit, setValueUnit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("15px");
 
   // #main
 
@@ -1744,22 +1747,22 @@ const Style = () => {
     onClick: clickHandler
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "This is an isolated component"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
-      padding: '20px',
-      fontFamily: 'Arial, sans-serif'
+      padding: "20px",
+      fontFamily: "Arial, sans-serif"
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.KeyboardShortcuts, {
     shortcuts: {
-      'mod+a': selectAll // Trigger "selectAll" on "cmd/ctrl + A"
+      "mod+a": selectAll // Trigger "selectAll" on "cmd/ctrl + A"
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "[cmd/ctrl + A] Combination pressed?", ' ', (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, isAllSelected ? 'Yes' : 'No')), isAllSelected && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "[cmd/ctrl + A] Combination pressed?", " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, isAllSelected ? "Yes" : "No")), isAllSelected && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     style: {
-      marginTop: '10px',
-      padding: '5px 10px',
-      backgroundColor: '#0073aa',
-      color: '#fff',
-      border: 'none',
-      borderRadius: '3px',
-      cursor: 'pointer'
+      marginTop: "10px",
+      padding: "5px 10px",
+      backgroundColor: "#0073aa",
+      color: "#fff",
+      border: "none",
+      borderRadius: "3px",
+      cursor: "pointer"
     },
     onClick: resetSelection
   }, "Reset")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1769,7 +1772,7 @@ const Style = () => {
       marginBottom: "20px"
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.MenuItem, {
-    icon: isActive ? 'yes' : 'no',
+    icon: isActive ? "yes" : "no",
     isSelected: isActive,
     onClick: () => setIsActive(state => !state)
   }, "Toggle")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1914,14 +1917,24 @@ const Style = () => {
     help: "The type of the current user",
     selected: option,
     options: [{
-      label: 'Author',
-      value: 'a'
+      label: "Author",
+      value: "a"
     }, {
-      label: 'Editor',
-      value: 'e'
+      label: "Editor",
+      value: "e"
     }],
     onChange: value => setOption(value)
-  }));
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: "20px",
+      marginLeft: "10px",
+      marginBottom: "20px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
+    __next40pxDefaultSize: true,
+    onChange: setValueUnit,
+    value: valueUnit
+  }), ";"));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
 
