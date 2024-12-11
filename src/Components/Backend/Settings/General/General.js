@@ -37,6 +37,7 @@ import {
   MenuGroup,
   __experimentalItemGroup as ItemGroup,
   __experimentalItem as Item,
+  PanelRow
 
 } from "@wordpress/components";
 import {
@@ -357,7 +358,12 @@ const General = ({ children, ...baseProps }) => {
       <Notice status="error">An unknown error occurred.</Notice>
       </div>
       
-
+{/* Panel */}
+<Panel header="My Panel">
+        <PanelBody title="My Block Settings" icon={ more } initialOpen={ true }>
+            <PanelRow>My Panel Inputs and Labels</PanelRow>
+        </PanelBody>
+    </Panel>
 
 
     </PanelBody>
