@@ -41,7 +41,8 @@ import {
   __experimentalNavigationMenu as NavigationMenu,
   __experimentalNumberControl as NumberControl,
   Popover,
-  QueryControls
+  QueryControls,
+  RadioControl
 } from "@wordpress/components";
 
 import { useState } from "react";
@@ -386,6 +387,9 @@ const Style = () => {
   const updateQuery = ( newQuery ) => {
       setQuery( { ...query, ...newQuery } );
   };
+
+  // RadioControl
+  const [ option, setOption ] = useState( 'a' );
 
 
 // #main
@@ -836,6 +840,17 @@ const Style = () => {
         />
       </div>
 
+{/* RadioControl */}
+<RadioControl
+            label="User type"
+            help="The type of the current user"
+            selected={ option }
+            options={ [
+                { label: 'Author', value: 'a' },
+                { label: 'Editor', value: 'e' },
+            ] }
+            onChange={ ( value ) => setOption( value ) }
+        />
     </>
   );
 };

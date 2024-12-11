@@ -1488,6 +1488,9 @@ const Style = () => {
     });
   };
 
+  // RadioControl
+  const [option, setOption] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('a');
+
   // #main
 
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
@@ -1866,7 +1869,19 @@ const Style = () => {
     onNumberOfItemsChange: newNumberOfItems => updateQuery({
       numberOfItems: newNumberOfItems
     })
-  })));
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RadioControl, {
+    label: "User type",
+    help: "The type of the current user",
+    selected: option,
+    options: [{
+      label: 'Author',
+      value: 'a'
+    }, {
+      label: 'Editor',
+      value: 'e'
+    }],
+    onChange: value => setOption(value)
+  }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
 
